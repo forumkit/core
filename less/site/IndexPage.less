@@ -1,0 +1,85 @@
+// ------------------------------------
+// Sidebar
+
+@media @desktop-up {
+  .IndexPage-nav .item-newDiscussion {
+    margin-bottom: 20px;
+
+    .Button {
+      .Button--block();
+    }
+  }
+}
+
+// ------------------------------------
+// Results
+
+.IndexPage-toolbar {
+  margin-bottom: 15px;
+}
+.IndexPage-toolbar-view, .IndexPage-toolbar-action {
+  display: inline-block;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+
+  > li {
+    display: inline-block;
+  }
+}
+.IndexPage-toolbar-view > li {
+  margin-right: 5px;
+}
+.IndexPage-toolbar-action {
+  float: right;
+
+  > li {
+    margin-left: 5px;
+  }
+}
+
+.IndexPage-results{
+  border: solid 1px var(--control-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+}
+
+.IndexPage-side{
+  width: 200px;
+  padding: 20px;
+  margin-top: 30px;
+  border: solid 1px var(--control-bg);
+  border-radius: var(--border-radius);
+}
+.IndexPage-side>ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.side-left .Dropdown--select .Dropdown-toggle{
+  display: none;
+}
+
+.side-left .Dropdown--select .Dropdown-menu {
+  display: block;
+  border: 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  float: none;
+  position: static;
+  background: 0 0;
+  box-shadow: none;
+}
+
+.side-left .Dropdown--select .Dropdown-menu>li.active>a {
+  background: 0 0;
+  color: var(--sidenav-color-active,var(--primary-color));
+  font-weight: 700
+}
+
+.side-right .IndexPage-newDiscussion{
+  width: 100%;
+}
