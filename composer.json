@@ -67,10 +67,9 @@
             "src/helpers.php"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Forumkit\\Tests\\": "tests/"
-        }
+    
+    "config": {
+        "sort-packages": true
     },
 
     "minimum-stability": "dev",
