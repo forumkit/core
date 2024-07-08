@@ -26,7 +26,7 @@
         text-align: center;
       }
       a {
-        color: #e7652e;
+        color: #01cd74;
         text-decoration: none;
       }
       a:hover {
@@ -39,7 +39,7 @@
       h2 {
         font-size: 28px;
         font-weight: normal;
-        color: #3C5675;
+        color: #22bb6d;
         margin-bottom: 0;
       }
 
@@ -67,7 +67,7 @@
         box-sizing: border-box;
       }
       .FormField input:focus {
-        border-color: #e7652e;
+        border-color: #01cd74;
         background: #fff;
         color: #444;
         outline: none;
@@ -84,7 +84,7 @@
         opacity: 0.7;
       }
       button {
-        background: #3C5675;
+        background: #22bb6d;
         color: #fff;
         border: 0;
         font-weight: bold;
@@ -97,7 +97,7 @@
         opacity: 0.5;
       }
 
-      #error {
+      #fk-system-messages {
         background: #D83E3E;
         color: #fff;
         padding: 15px 20px;
@@ -105,28 +105,6 @@
         margin-bottom: 20px;
       }
 
-      .animated {
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-
-        -webkit-animation-duration: 0.5s;
-        animation-duration: 0.5s;
-
-        animation-delay: 1.7s;
-        -webkit-animation-delay: 1.7s;
-      }
-      @-webkit-keyframes fadeIn {
-        0% {opacity: 0}
-        100% {opacity: 1}
-      }
-      @keyframes fadeIn {
-        0% {opacity: 0}
-        100% {opacity: 1}
-      }
-      .fadeIn {
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
-      }
 
       .Problems {
         margin-top: 50px;
@@ -147,7 +125,7 @@
       }
       .Problem-message {
         font-size: 16px;
-        color: #3C5675;
+        color: #22bb6d;
         font-weight: normal;
         margin: 0;
       }
@@ -164,7 +142,7 @@
         <?php echo file_get_contents(__DIR__.'/logo.svg'); ?>
       </h1>
 
-      <div class="animated fadeIn">
+      <div class="panel">
         <?php echo $content; ?>
       </div>
     </div>

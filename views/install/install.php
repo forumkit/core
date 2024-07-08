@@ -1,5 +1,5 @@
 <form method="post">
-  <div id="error" style="display:none"></div>
+  <div id="fk-system-messages" style="display:none"></div>
 
   <div class="FormGroup">
     <div class="FormField">
@@ -82,9 +82,9 @@
             window.location.reload();
           } else {
             response.text().then(errorMessage => {
-              var error = document.querySelector('#error');
+              var error = document.querySelector('#fk-system-messages');
               error.style.display = 'block';
-              error.textContent = 'Something went wrong:\n\n' + errorMessage;
+              error.textContent = '出了点问题：\n\n' + errorMessage;
               button.disabled = false;
               button.textContent = 'Install Forumkit';
             });
