@@ -70,6 +70,10 @@ export default class IndexPage<CustomAttrs extends IIndexPageAttrs = IIndexPageA
     );
   }
 
+  LeftItems() {
+    const items = new ItemList();
+    return items;
+  }
 
   rightbarItems() {
     const items = new ItemList<Mithril.Children>();
