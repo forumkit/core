@@ -70,7 +70,7 @@ export default class IndexPage<CustomAttrs extends IIndexPageAttrs = IIndexPageA
     );
   }
 
-  LeftItems() {
+  CustomItems() {
     const items = new ItemList();
     return items;
   }

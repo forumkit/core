@@ -53,6 +53,11 @@ core:
       title: 小工具
       description: 创造一些令人惊奇的东西，以有趣的方式构建社区
 
+    # 自定义页面
+    page:
+      title: 页面
+      description: 创造一些令人惊奇的页面，以有趣的方式构建社区
+
     # 创建用户
     create_user:
       email_placeholder: => core.ref.email
@@ -184,6 +189,8 @@ core:
       basics_title: => core.admin.basics.description
       widget_button: => core.admin.widget.title
       widget_title: => core.admin.widget.description
+      page_button: => core.admin.page.title
+      page_title: => core.admin.page.description
       categories:
         authentication: 身份验证
         core: 核心配置

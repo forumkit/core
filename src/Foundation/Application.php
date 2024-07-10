@@ -14,7 +14,7 @@ class Application
      *
      * @var string
      */
-    const VERSION = '0.9.0';
+    const VERSION = '0.9.1';
 
     /**
      * Forumkit应用程序的IoC容器。

@@ -60,14 +60,14 @@ export default class AdminNav extends Component {
   items() {
     const items = new ItemList();
 
-    items.add('category-core', <h4 className="ExtensionListTitle">{app.translator.trans('core.admin.nav.categories.core')}</h4>, 120);
+    items.add('category-core', <h4 className="ExtensionListTitle">{app.translator.trans('core.admin.nav.categories.core')}</h4>, 130);
 
     items.add(
       'dashboard',
       <LinkButton href={app.route('dashboard')} icon="far fa-chart-bar" title={app.translator.trans('core.admin.nav.dashboard_title')}>
         {app.translator.trans('core.admin.nav.dashboard_button')}
       </LinkButton>,
-      110
+      120
     );
 
     items.add(
@@ -75,13 +75,21 @@ export default class AdminNav extends Component {
       <LinkButton href={app.route('basics')} icon="fas fa-pencil-alt" title={app.translator.trans('core.admin.nav.basics_title')}>
         {app.translator.trans('core.admin.nav.basics_button')}
       </LinkButton>,
-      100
+      110
     );
 
     items.add(
       'widget',
       <LinkButton href={app.route('widget')} icon="fas fa-file-alt" title={app.translator.trans('core.admin.nav.widget_title')}>
         {app.translator.trans('core.admin.nav.widget_button')}
+      </LinkButton>,
+      100
+    );
+
+    items.add(
+      'page',
+      <LinkButton href={app.route('page')} icon="far fa-file" title={app.translator.trans('core.admin.nav.page_title')}>
+        {app.translator.trans('core.admin.nav.page_button')}
       </LinkButton>,
       90
     );

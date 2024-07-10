@@ -4,7 +4,7 @@
   <div class="FormGroup">
     <div class="FormField">
       <label>Site Title</label>
-      <input name="siteTitle">
+      <input name="siteTitle" value="Forumkit">
     </div>
   </div>
 
@@ -31,7 +31,7 @@
 
     <div class="FormField">
       <label>Table Prefix</label>
-      <input type="text" name="tablePrefix">
+      <input type="text" name="tablePrefix" value="fk_">
     </div>
   </div>
 

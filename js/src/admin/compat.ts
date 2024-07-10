@@ -25,6 +25,7 @@ import LoadingModal from './components/LoadingModal';
 import DashboardPage from './components/DashboardPage';
 import BasicsPage from './components/BasicsPage';
 import WidgetPage from './components/WidgetPage';
+import CustomPage from './components/CustomPage';
 import UserListPage from './components/UserListPage';
 import EditCustomHeaderModal from './components/EditCustomHeaderModal';
 import PermissionsPage from './components/PermissionsPage';
@@ -65,6 +66,7 @@ export default Object.assign(compat, {
   'components/DashboardPage': DashboardPage,
   'components/BasicsPage': BasicsPage,
   'components/WidgetPage': WidgetPage,
+  'components/CustomPage': CustomPage,
   'components/UserListPage': UserListPage,
   'components/EditCustomHeaderModal': EditCustomHeaderModal,
   'components/PermissionsPage': PermissionsPage,

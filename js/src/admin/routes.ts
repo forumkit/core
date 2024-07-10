@@ -2,6 +2,7 @@ import AdminApplication from './AdminApplication';
 import DashboardPage from './components/DashboardPage';
 import BasicsPage from './components/BasicsPage';
 import WidgetPage from './components/WidgetPage';
+import CustomPage from './components/CustomPage';
 import PermissionsPage from './components/PermissionsPage';
 import AppearancePage from './components/AppearancePage';
 import MailPage from './components/MailPage';
@@ -22,6 +23,7 @@ export default function (app: AdminApplication) {
     dashboard: { path: '/', component: DashboardPage },
     basics: { path: '/basics', component: BasicsPage },
     widget: { path: '/widget', component: WidgetPage },
+    page: { path: '/page', component: CustomPage },
     permissions: { path: '/permissions', component: PermissionsPage },
     appearance: { path: '/appearance', component: AppearancePage },
     mail: { path: '/mail', component: MailPage },

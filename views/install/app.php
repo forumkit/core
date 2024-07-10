@@ -20,9 +20,9 @@
         color: #7E96B3;
       }
       .container {
-        max-width: 515px;
+        max-width: 500px;
         margin: 0 auto;
-        padding: 100px 30px;
+        padding: 10px;
         text-align: center;
       }
       a {
@@ -34,7 +34,7 @@
       }
 
       h1 {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
       }
       h2 {
         font-size: 28px;
@@ -44,10 +44,10 @@
       }
 
       form {
-        margin-top: 40px;
+        margin-top: 20px;
       }
       .FormGroup {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
       .FormGroup .FormField:first-child input {
         border-top-left-radius: 4px;
@@ -63,7 +63,7 @@
         border: 2px solid transparent;
         transition: background 0.2s, border-color 0.2s, color 0.2s;
         width: 100%;
-        padding: 15px 15px 15px 180px;
+        padding: 10px 15px 10px 180px;
         box-sizing: border-box;
       }
       .FormField input:focus {
