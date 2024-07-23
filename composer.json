@@ -6,7 +6,7 @@
     "license": "MIT",
 
     "require": {
-        "php": ">=8.0 || ^8.3",
+        "php": ">=7.4 || ^8.3",
         "components/font-awesome": "^5.14.0",
         "dflydev/fig-cookies": "^3.0.0",
         "doctrine/dbal": "^2.7",
