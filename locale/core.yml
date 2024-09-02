@@ -1,0 +1,862 @@
+core:
+
+  ##
+  # 唯一键 - 以下键各自仅在一个位置使用。
+  ##
+
+  # 管理员界面
+  admin:
+
+    # 外观页面
+    appearance:
+      colored_header_label: 彩色标题
+      colors_heading: 颜色
+      colors_primary_label: 主要颜色
+      colors_secondary_label: 次要颜色
+      colors_text: "选择两种颜色来设置你的论坛主题。第一种将用作高亮颜色，第二种将用于设置背景元素的样式。"
+      custom_footer_heading: 自定义页脚
+      custom_footer_text: => core.ref.custom_footer_text
+      custom_header_heading: 自定义标题
+      custom_header_text: => core.ref.custom_header_text
+      custom_styles_cannot_use_less_features: "在自定义LESS中不允许使用@import和数据URI功能。"
+      custom_styles_heading: 自定义样式
+      custom_styles_text: 通过添加自己的Less/CSS代码来自定义论坛的外观，这些代码将在Forumkit的默认样式之上应用。
+      dark_mode_label: 深色模式
+      description: "自定义论坛的颜色、徽标和其他变量。"
+      edit_css_button: 编辑自定义CSS
+      edit_footer_button: => core.ref.custom_footer_title
+      edit_header_button: => core.ref.custom_header_title
+      enter_hex_message: 请输入十六进制颜色代码。
+      favicon_heading: 网站图标
+      favicon_text: 上传一张图片作为论坛的快捷方式图标。
+      logo_heading: Logo
+      logo_text: 上传一张图片以替换论坛标题。
+      title: 外观
+
+    # 基础设置页面
+    basics:
+      all_discussions_label: => core.ref.all_discussions
+      default_language_heading: 默认语言
+      description: "设置您的论坛标题、语言和其他基本设置。"
+      display_name_heading: 用户显示名称
+      display_name_text: 选择用于用户显示名称的驱动程序。默认情况下，显示用户名。
+      forum_description_heading: 论坛描述
+      forum_description_text: 输入一两句简短的句子来描述您的社区。这将在元标签中显示并在搜索引擎中出现。
+      forum_title_heading: 论坛标题
+      home_page_heading: 主页
+      home_page_text: 选择用户访问您的论坛时首先看到的页面。
+      show_language_selector_label: 显示语言选择器
+      slug_driver_heading: "Slug 驱动程序: {model}"
+      slug_driver_text: 选择用于此模型的slug驱动程序。
+      title: 基本
+      welcome_banner_heading: 欢迎横幅
+      welcome_banner_text: 配置在所有讨论页面上横幅中显示的文本。使用此功能来欢迎访客进入你的论坛。
+
+    # 创建用户模态框
+    create_user:
+      email_placeholder: => core.ref.email
+      email_confirmed_label: 要求用户确认此电子邮件
+      password_placeholder: => core.ref.password
+      submit_and_create_another_button: 创建并添加另一个
+      submit_button: 创建用户
+      title: 创建新用户
+      use_random_password: 生成随机密码
+      username_placeholder: => core.ref.username
+
+    # 仪表盘页面
+    dashboard:
+      clear_cache_button: 清除缓存
+      description: 概览您的论坛。
+      io_error_message: "无法写入文件系统。请检查文件系统权限并重试。或者尝试从命令行运行。"
+      status:
+        headers:
+          scheduler-status: 调度器状态
+          queue-driver: 队列驱动程序
+          session-driver: 会话驱动程序
+        scheduler:
+          active: 活跃
+          inactive: 不活跃
+          never-run: 从未运行
+      title: 仪表盘
+      tools_button: 工具
+
+    # 调试警告小部件
+    debug-warning:
+      detail: |
+        当<code>debug</code>模式激活时，Forumkit将在每次请求时重新构建其<code>JavaScript</code>和<code>CSS</code>资源，并且可能还会泄露其他信息，如数据库密钥、环境变量等。
+
+        在生产环境中，强烈建议在<code>config.php</code>文件中禁用<code>debug</code>。有关更多信息，请参阅<link>Forumkit文档</link>。
+      label: 调试模式已激活
+
+    # 编辑自定义CSS模态对话框
+    edit_css:
+      customize_text: "通过添加您自己的Less/CSS代码来自定义论坛的外观，这些代码将在Forumkit的<a>默认样式</a>之上应用。"
+      submit_button: => core.ref.save_changes
+      title: 编辑自定义CSS
+
+    # 编辑自定义页脚模态对话框
+    edit_footer:
+      customize_text: => core.ref.custom_footer_text
+      submit_button: => core.ref.save_changes
+      title: => core.ref.custom_footer_title
+
+    # 编辑组模态对话框
+    edit_group:
+      color_label: => core.ref.color
+      delete_button: 删除组
+      delete_confirmation: "您确定要删除这个组吗？组成员将不会被删除。"
+      hide_label: 在论坛中隐藏
+      icon_label: => core.ref.icon
+      icon_text: => core.ref.icon_text
+      name_label: 名称
+      plural_placeholder: 复数形式（例如：版主们）
+      singular_placeholder: 单数形式（例如：版主）
+      submit_button: => core.ref.save_changes
+      title: 创建组
+
+    # 编辑自定义页头模态对话框
+    edit_header:
+      customize_text: => core.ref.custom_header_text
+      submit_button: => core.ref.save_changes
+      title: => core.ref.custom_header_title
+
+    # 管理员界面中的电子邮件页面
+    email:
+      addresses_heading: 地址
+      description: "配置您的论坛将用于发送电子邮件的驱动程序、设置和地址。"
+      driver_heading: 选择一个驱动程序
+      driver_label: 驱动程序
+      from_label: 发件人
+      mail_encryption_label: 加密
+      mail_host_label: 主机
+      mail_mailgun_domain_label: 域名
+      mail_mailgun_region_label: 区域
+      mail_mailgun_secret_label: 密钥
+      mail_password_label: => core.ref.password
+      mail_port_label: 端口
+      mail_username_label: => core.ref.username
+      mailgun_heading: Mailgun 设置
+      not_sending_message: Forumkit 当前不发送电子邮件。这可能是由于所选的驱动程序或其配置中的错误。
+      send_test_mail_button: 发送
+      send_test_mail_heading: 发送测试邮件
+      send_test_mail_success: "测试邮件已成功发送！"
+      send_test_mail_text: "这将使用上述配置向您的电子邮件 {email} 发送一封测试邮件。"
+      smtp_heading: SMTP 设置
+      title: => core.ref.email
+
+    # 默认扩展页面
+    extension:
+      configure_scopes: 配置作用域
+      confirm_purge: 清除将删除与扩展相关的所有数据库条目和资产。这不会卸载扩展；必须通过Composer进行。您确定要继续吗？
+      disabled: 已禁用
+      enable_to_see: 启用扩展以查看和更改设置。
+      enabled: 已启用
+      info_links:
+        discuss: 讨论
+        documentation: 文档
+        donate: 捐赠
+        source: 源码
+        support: 支持
+        website: 网站
+      no_permissions: 此扩展没有权限。
+      no_settings: 此扩展没有设置。
+      open_modal: 打开设置
+      permissions_title: 权限
+      purge_button: 清除
+      readme:
+        button_label: README
+        no_readme: 此扩展似乎没有README文件
+        title: "{extName} 文档"
+
+    # 次级头部
+    header:
+      get_help: 获取帮助
+      log_out_button: => core.ref.log_out
+
+    # 加载扩展时显示的模态对话框
+    loading:
+      title: 请稍候...
+
+    # 导航栏
+    nav:
+      appearance_button: => core.admin.appearance.title
+      appearance_title: => core.admin.appearance.description
+      basics_button: => core.admin.basics.title
+      basics_title: => core.admin.basics.description
+      categories:
+        authentication: 认证
+        core: 核心配置
+        discussion: 讨论
+        feature: 功能
+        formatting: 格式化
+        language: 语言
+        moderation: 管理
+        other: 其他扩展
+        theme: 主题
+      dashboard_button: => core.admin.dashboard.title
+      dashboard_title: => core.admin.dashboard.description
+      email_button: => core.ref.email
+      email_title: => core.admin.email.description
+      permissions_button: => core.admin.permissions.title
+      permissions_title: => core.admin.permissions.description
+      userlist_button: => core.admin.users.title
+      userlist_title: => core.admin.users.description
+      search_placeholder: 搜索扩展
+
+    # 管理员界面中的权限页面
+    permissions:
+      allow_hide_own_posts_label: 允许删除自己的帖子
+      allow_post_editing_label: 允许编辑帖子
+      allow_renaming_label: 允许重命名
+      create_access_token_label: 创建访问令牌
+      create_heading: 创建
+      delete_discussions_forever_label: 永久删除讨论
+      delete_discussions_label: 删除讨论
+      delete_posts_forever_label: 永久删除帖子
+      delete_posts_label: 删除帖子
+      description: 配置谁可以看到和做什么。
+      edit_posts_label: 编辑帖子
+      edit_users_label: 编辑用户属性
+      edit_users_credentials_label: 编辑用户凭证
+      edit_users_groups_label: 编辑用户组
+      global_heading: 全局
+      moderate_heading: 管理
+      moderate_access_tokens_label: 管理访问令牌
+      new_group_button: 新建组
+      participate_heading: 参与
+      post_without_throttle_label: 不等待即可多次回复
+      read_heading: 阅读
+      rename_discussions_label: 重命名讨论
+      reply_to_discussions_label: 回复讨论
+      search_users_label: => core.ref.search_users
+      sign_up_label: 注册
+      start_discussions_label: 发起讨论
+      title: 权限
+      view_forum_label: 查看论坛（讨论和用户）
+      view_hidden_groups_label: 查看隐藏组徽章
+      view_last_seen_at_label: 始终查看用户最后在线时间
+      view_post_ips_label: 查看帖子IP地址
+
+    # 权限页面的下拉菜单
+    permissions_controls:
+      allow_indefinitely_button: 永久允许
+      allow_never_button: => core.ref.never
+      allow_some_minutes_button: "{count, plural, one {发布 # 分钟内} other {发布 # 分钟内}}"
+      allow_ten_minutes_button: 发布 10 分钟内
+      allow_until_reply_button: 直到被回复
+      everyone_button: 所有人
+      members_button: => core.group.members
+      signup_closed_button: 关闭注册
+      signup_open_button: 开放注册
+
+    # 设置字段中通用
+    settings:
+      saved_message: 您的更改已保存
+      submit_button: => core.ref.save_changes
+
+    # 图片上传按钮
+    upload_image:
+      remove_button: => core.ref.remove
+      upload_button: 选择图片...
+
+    # 管理员仪表板上的用户列表
+    users:
+      create_user_button: 新建用户
+      description: 您论坛上所有用户的分页列表。
+
+      grid:
+        columns:
+          display_name:
+            title: 显示名称
+
+          edit_user:
+            button: => core.ref.edit
+            title: => core.ref.edit_user
+            tooltip: 编辑 {username}
+
+          email:
+            title: => core.ref.email
+            visibility_hide: 隐藏电子邮件地址
+            visibility_show: 显示电子邮件地址
+
+          group_badges:
+            no_badges: 无
+            title: 用户组
+
+          join_time:
+            title: 加入时间
+
+          user_id:
+            title: ID
+
+          username:
+            profile_link_tooltip: 访问 {username} 的个人主页
+            title: => core.ref.username
+
+        invalid_column_content: 无效
+
+      pagination:
+        back_button: 上一页
+        first_button: 转到第一页
+        go_to_page_textbox_a11y_label: 直接转到指定页码
+        last_button: 转到最后一页
+        next_button: 下一页
+        page_counter: 第 {current} 页，共 {total} 页
+
+      search_placeholder: => core.ref.search_users
+      title: => core.ref.users
+      total_users: "总用户数: {count}"
+
+  # 论坛用户界面
+  forum:
+
+    # 更改电子邮件的模态对话框
+    change_email:
+      confirm_password_placeholder: => core.ref.confirm_password
+      confirmation_message: => core.ref.confirmation_email_sent
+      dismiss_button: => core.ref.okay
+      incorrect_password_message: 您输入的密码不正确
+      submit_button: => core.ref.save_changes
+      title: => core.ref.change_email
+
+    # 更改密码的模态对话框
+    change_password:
+      send_button: 发送密码重置邮件
+      text: 点击下面的按钮并检查您的电子邮件，以获取更改密码的链接。
+      title: => core.ref.change_password
+
+    # 编辑器控件
+    composer:
+      close_tooltip: 关闭
+      exit_full_screen_tooltip: 退出全屏
+      full_screen_tooltip: 全屏
+      minimize_tooltip: 最小化
+      preview_tooltip: 预览
+
+    # 编辑发帖时使用
+    composer_discussion:
+      body_placeholder: 写一篇文章...
+      discard_confirmation: "您尚未发布讨论。是否要放弃它？"
+      submit_button: 发布讨论
+      title: => core.ref.new_a_discussion
+      title_placeholder: 讨论标题
+
+    # 编辑帖子时使用
+    composer_edit:
+      discard_confirmation: "您尚未保存更改。是否要放弃它们？"
+      edited_message: 您的编辑已保存
+      post_link: "在 {discussion} 中的帖子 #{number}"
+      submit_button: => core.ref.save_changes
+      view_button: => core.ref.view
+
+    # 回复讨论时使用
+    composer_reply:
+      body_placeholder: => core.ref.write_a_reply
+      discard_confirmation: "您尚未发布回复。是否要放弃它？"
+      posted_message: 您的回复已发布
+      submit_button: 发布回复
+      view_button: => core.ref.view
+
+    # 讨论控制按钮使用
+    discussion_controls:
+      cannot_reply_button: 回复已关闭
+      cannot_reply_text: 您没有权限回复此讨论
+      delete_button: => core.ref.delete
+      delete_confirmation: "您确定要删除此讨论吗？"
+      delete_forever_button: => core.ref.delete_forever
+      log_in_to_reply_button: 登录以回复
+      rename_button: => core.ref.rename
+      reply_button: => core.ref.reply
+      restore_button: => core.ref.restore
+      toggle_dropdown_accessible_label: 切换讨论操作下拉菜单
+
+    # 讨论列表使用
+    discussion_list:
+      empty_text: 似乎这里没有任何讨论。
+      load_more_button: => core.ref.load_more
+      replied_text: "{username} 回复于 {ago}"
+      posted_text: "{username} 发布于 {ago}"
+      total_replies_a11y_label: "{count, plural, one {1 条回复} other {# 条回复}}"
+      unread_replies_a11y_label: "{count, plural, one {1 条未读回复} other {# 条未读回复}}。将未读回复标记为已读。"
+
+    # 忘记密码模态对话框
+    forgot_password:
+      dismiss_button: => core.ref.okay
+      email_placeholder: => core.ref.email
+      email_sent_message: 如果您输入的电子邮件已在本网站注册，我们将向您发送一封包含重置密码链接的电子邮件。如果一两分钟内未收到，请检查垃圾邮件文件夹。
+      not_found_message: 没有用户注册了该电子邮件地址。
+      submit_button: 恢复密码
+      text: 输入您的电子邮件地址，我们将向您发送重置密码的链接。
+      title: 忘记密码
+
+    # 头部和会话下拉菜单
+    header:
+      admin_button: 控制面板
+      back_to_index_tooltip: 返回讨论列表
+      locale_dropdown_accessible_label: 更改论坛语言
+      log_in_link: => core.ref.log_in
+      log_out_button: => core.ref.log_out
+      profile_button: 个人主页
+      search_clear_button_accessible_label: 清除搜索查询
+      search_placeholder: 搜索
+      search_role_label: 搜索论坛
+      session_dropdown_accessible_label: 切换会话选项下拉菜单
+      settings_button: => core.ref.settings
+      sign_up_link: => core.ref.sign_up
+
+    # 索引页面，与讨论列表相关
+    index:
+      all_discussions_link: => core.ref.all_discussions
+      cannot_start_discussion_button: 无法开始讨论
+      mark_all_as_read_confirmation: "您确定要将所有讨论标记为已读吗？"
+      mark_all_as_read_tooltip: => core.ref.mark_all_as_read
+      meta_title_text: => core.ref.all_discussions
+      refresh_tooltip: 刷新
+      start_discussion_button: => core.ref.new_a_discussion
+      toggle_sidenav_dropdown_accessible_label: 切换导航下拉菜单
+
+    # 讨论列表上方的排序控件
+    index_sort:
+      latest_button: 新回复
+      newest_button: 新讨论
+      oldest_button: 最旧贴
+      relevance_button: 搜索相关
+      toggle_dropdown_accessible_label: 更改讨论列表排序
+      top_button: 热门帖
+
+    # 登录模态对话框
+    log_in:
+      forgot_password_link: "忘记密码？"
+      invalid_login_message: 您的登录信息不正确
+      password_placeholder: => core.ref.password
+      remember_me_label: 记住我
+      sign_up_text: "还没有账号？<a>注册</a>"
+      submit_button: => core.ref.log_in
+      title: => core.ref.log_in
+      username_or_email_placeholder: 用户名或邮箱
+
+    # 通知下拉菜单（即“铃铛”图标）
+    notifications:
+      delete_all_confirm: 您确定要删除所有通知吗？此操作不可撤销
+      delete_all_tooltip: 删除所有通知
+      discussion_renamed_text: "{username} 更改了标题"
+      empty_text: 没有通知
+      mark_all_as_read_tooltip: => core.ref.mark_all_as_read
+      mark_as_read_tooltip: 标记为已读
+      title: => core.ref.notifications
+      toggle_dropdown_accessible_label: 查看通知
+      tooltip: => core.ref.notifications
+
+    # 单个帖子工具提示
+    post:
+      edited_text: 已编辑
+      edited_tooltip: "{username} 在 {ago} 编辑了"
+      number_tooltip: "发布 #{number}"
+
+    # 帖子控制按钮
+    post_controls:
+      delete_button: => core.ref.delete
+      delete_confirmation: "您确定要永久删除这篇帖子吗？此操作无法撤销。"
+      delete_forever_button: => core.ref.delete_forever
+      edit_button: => core.ref.edit
+      hide_confirmation: "您确定要删除这篇帖子吗？"
+      restore_button: => core.ref.restore
+      toggle_dropdown_accessible_label: 切换帖子控制下拉菜单
+
+    # 帖子流右侧的滚动条
+    post_scrubber:
+      now_link: 最新回复
+      original_post_link: 原始帖子
+      unread_text: "{count} 未读"
+      viewing_text: "{count, plural, one {{index} / {formattedCount} 帖子} other {{index} / {formattedCount} 帖子}}"
+
+    # 帖子流中的帖子之间
+    post_stream:
+      discussion_renamed_old_tooltip: '旧标题是: "{old}"'
+      discussion_renamed_text: "{username} 在 {time} 将标题更改为 {new}。"
+      load_more_button: => core.ref.load_more
+      reply_placeholder: => core.ref.write_a_reply
+      time_lapsed_text: "{period} 后"
+
+    # 重命名讨论的模态对话框
+    rename_discussion:
+      submit_button: => core.ref.rename
+      title: 重命名讨论
+
+    # 搜索结果下拉菜单
+    search:
+      all_discussions_button: '搜索所有讨论中的 "{query}"'
+      discussions_heading: => core.ref.discussions
+      users_heading: => core.ref.users
+
+    # 安全页面
+    security:
+      browser_on_operating_system: "{browser} 在 {os}"
+      cannot_terminate_current_session: 无法终止当前活动会话。请登出。
+      created: 创建时间
+      current_active_session: 当前活动会话
+      developer_tokens_heading: 开发者令牌
+      empty_text: 这里似乎没有内容可查看。
+      global_logout:
+        heading: 全局登出
+        help_text: "清除当前cookie会话，终止所有会话，撤销开发者令牌，并使任何电子邮件确认或密码重置邮件失效。"
+        log_out_button: => core.ref.log_out
+      hide_access_token: 隐藏令牌
+      last_activity: 上次活动
+      never: => core.ref.never
+      new_access_token_button: => core.ref.new_token
+      new_access_token_modal:
+        submit_button: 创建令牌
+        title: => core.ref.new_token
+        title_placeholder: 标题
+      revoke_access_token: 撤销
+      revoke_access_token_confirmation: => core.ref.generic_confirmation_message
+      sessions_heading: 活动会话
+      session_terminated: "{count, plural, one {会话已终止} other {已终止 {#} 个会话}}。"
+      session_termination_failed: "终止您的会话时出错。"
+      show_access_token: 查看令牌
+      terminate_all_other_sessions: 终止所有其他会话
+      terminate_all_other_sessions_confirmation: => core.ref.generic_confirmation_message
+      terminate_session: 终止
+      title: => core.ref.security
+      token_revoked: 令牌已撤销
+      token_item_title: "{title} - {token}"
+      token_title_placeholder: "/"
+
+    # 设置-页面
+    settings:
+      account_heading: 帐户设置
+      change_email_button: => core.ref.change_email
+      change_password_button: => core.ref.change_password
+      notification_checkbox_a11y_label_template: '通过 {method} 接收 "{description}" 通知'
+      notifications_heading: => core.ref.notifications
+      notify_by_email_heading: => core.ref.email
+      notify_by_web_heading: 通知
+      notify_discussion_renamed_label: 有人重命名了我发起的讨论
+      privacy_disclose_online_label: 允许他人查看我的在线状态
+      privacy_heading: 隐私
+      title: => core.ref.settings
+
+    # 注册模式-对话框
+    sign_up:
+      dismiss_button: => core.ref.okay
+      email_placeholder: => core.ref.email
+      log_in_text: "已有账户？<a>登录</a>"
+      password_placeholder: => core.ref.password
+      submit_button: => core.ref.sign_up
+      title: => core.ref.sign_up
+      username_placeholder: => core.ref.username
+      welcome_text: "欢迎, {username}!"
+
+    # 用户配置文件页面和配置文件弹出窗口
+    user:
+      avatar_remove_button: => core.ref.remove
+      avatar_upload_button: 上传
+      avatar_upload_tooltip: 上传新头像
+      discussions_link: => core.ref.discussions
+      in_discussion_text: "在 {discussion}"
+      joined_date_text: "加入于 {ago}"
+      online_text: 在线
+      posts_empty_text: 这里似乎没有帖子。
+      posts_link: => core.ref.posts
+      posts_load_more_button: => core.ref.load_more
+      security_link: => core.ref.security
+      settings_link: => core.ref.settings
+
+    # 用户配置文件页面（管理功能）
+    user_controls:
+      button: 控制
+      delete_button: => core.ref.delete
+      delete_confirmation: "您确定要删除这个用户吗？用户的帖子不会被删除。"
+      delete_error_message: "删除用户 <i>{username} ({email})</i> 失败"
+      delete_success_message: "用户 <i>{username} ({email})</i> 已删除"
+      edit_button: => core.ref.edit
+      toggle_dropdown_accessible_label: 切换用户控制下拉菜单
+
+    # 新用户未确认其电子邮件地址时显示的警报
+    user_email_confirmation:
+      alert_message: => core.ref.confirmation_email_sent
+      resend_button: 重新发送确认邮件
+      sent_message: 已发送
+
+    welcome_hero:
+      hide: 隐藏欢迎消息
+
+  # 站点和管理界面
+  lib:
+    debug_button: 调试
+
+    # Alert 组件
+    alert:
+      dismiss_a11y_label: 关闭提示
+
+    # 讨论徽章的工具提示
+    badge:
+      hidden_tooltip: 隐藏
+
+    # 下拉组件
+    dropdown:
+      toggle_dropdown_accessible_label: 切换下拉菜单
+
+    # 数据段组件
+    data_segment:
+      label: "{label}:"
+
+    # 编辑用户-模式对话框（管理功能）
+    edit_user:
+      activate_button: 激活用户
+      email_heading: => core.ref.email
+      email_label: => core.ref.email
+      groups_heading: 用户组
+      password_heading: => core.ref.password
+      password_label: => core.ref.password
+      set_password_label: 设置新密码
+      submit_button: => core.ref.save_changes
+      title: => core.ref.edit_user
+      username_heading: => core.ref.username
+      username_label: => core.ref.username
+      nothing_available: 您无权编辑此用户。
+
+    # 错误消息
+    error:
+      circular_dependencies_message: "检测到循环依赖：{extensions}。已中止。请禁用其中一个扩展，然后重试。"
+      dependent_extensions_message: "在禁用以下依赖扩展之前，无法禁用 {extension}：{extensions}"
+      extension_initialiation_failed_message: "{extension} 初始化失败，请检查浏览器控制台以获取更多信息。"
+      generic_message: "哎呀！出错了。请刷新页面并重试。"
+      generic_cross_origin_message: "哎呀！跨域请求出错。请刷新页面并重试。"
+      missing_dependencies_message: "在启用以下依赖项之前，无法启用 {extension}：{extensions}"
+      not_found_message: 请求的资源未找到。
+      payload_too_large_message: 请求负载过大。
+      permission_denied_message: 您没有权限执行此操作。
+      rate_limit_exceeded_message: 您操作过快。请稍后再试。
+      render_failed_message: 抱歉，加载此内容时出错，请刷新页面重试。如果您是管理员，请查看网站日志文件查看详情。
+
+    # 加载指示器组件
+    loading_indicator:
+      accessible_label: => core.ref.loading
+
+    # 设置页面元标题
+    meta_titles:
+      with_page_title: "{pageNumber, plural, =1 {{pageTitle} - {forumName}} other {{pageTitle}: 第 # 页 - {forumName}}}"
+      without_page_title: "{pageNumber, plural, =1 {{forumName}} other {第 # 页 - {forumName}}}"
+
+    # 用于模态
+    modal:
+      close: 关闭
+
+    # 导航标题
+    nav:
+      drawer_button: 打开导航抽屉
+
+    # 缩写数字时用作后缀
+    number_suffix:
+      kilo_text: K  # 千
+      mega_text: M  # 百万
+
+    # 标点一系列项目
+    series:
+      glue_text: ", "
+      three_text: "{first}, {second}, 和 {third}"
+      two_text: "{first} 和 {second}"
+
+    # 修改用户名
+    username:
+      deleted_text: "[已删除]"
+
+  # 普通 JS 客户端以外的视图
+  views:
+    # 基本 HTML 管理索引显示
+    admin:
+      extensions:
+        caption: => core.ref.extensions
+        disable: 禁用
+        empty: 尚未安装任何扩展
+        enable: 启用
+        name: 扩展名称
+        package_name: 软件包名称
+        version: 版本
+      info:
+        caption: 应用信息
+      title: 管理开发者
+
+    # 确认电子邮件
+    confirm_email:
+      submit_button: => core.ref.confirm_email
+      text: 点击下面的按钮以确认您的帐户电子邮件。
+      title: => core.ref.confirm_email
+
+    # 基本 HTML 内容加载器显示
+    content:
+      javascript_disabled_message: 本网站最好在启用 JavaScript 的现代浏览器中查看。
+      load_error_message: 尝试加载此网站的完整版本时出错。尝试强制刷新此页面以修复错误。
+      loading_text: => core.ref.loading
+
+    # 显示在基本 HTML 讨论视图
+    discussion:
+      next_page_button: => core.ref.next_page
+      previous_page_button: => core.ref.previous_page
+
+    # 遇到错误时
+    error:
+      csrf_token_mismatch: 您已经发呆很长时间了。
+      csrf_token_mismatch_return_link: 请返回再试一次
+      invalid_confirmation_token: 验证链接已使用或无效。
+      not_authenticated: 您没有权限访问此页面。登录后重试。
+      not_found: 哎呀！找不到您请求的页面。
+      not_found_return_link: "返回至 {forum}"
+      permission_denied: 您没有权限访问此页面。
+      unknown: 尝试加载此页面时出错
+
+    # 基本 HTML 讨论索引显示
+    index:
+      all_discussions_heading: => core.ref.all_discussions
+      next_page_button: => core.ref.next_page
+      previous_page_button: => core.ref.previous_page
+
+    # 注销-确认界面显示
+    log_out:
+      log_out_button: => core.ref.log_out
+      log_out_confirmation: "您确定要从 {forum} 退出登录吗？"
+      title: => core.ref.log_out
+
+    # 重置密码-接口显示
+    reset_password:
+      confirm_password_label: 确认新密码
+      new_password_label: 新密码
+      submit_button: => core.ref.save_changes
+      title: => core.ref.reset_your_password
+
+  # API 输出的消息
+  api:
+    invalid_username_message: "用户名只能包含字母、数字和破折号。"
+    invalid_filter_type:
+      must_be_numeric_message: "{filter} 过滤器必须是数字。"
+      must_not_be_array_message: "{filter} 过滤器不能是数组。"
+      must_not_be_multidimensional_array_message: "{filter} 过滤器不能是多维数组。"
+
+  # 站点发送的电子邮件
+  email:
+
+    # 用户注册新帐户时发送的电子邮件
+    activate_account:
+      subject: 激活您的新账户
+      body: |
+        嘿 {username}!
+
+        有人（希望是您！）已在 {forum} 上使用此电子邮件地址注册。
+
+        如果这是您自己操作的，只需点击以下链接即可激活您的账户：
+        {url}
+
+        如果不是您操作的，请忽略此邮件。
+
+    # 用户更改电子邮件地址时发送的电子邮件
+    confirm_email:
+      subject: 确认您的新电子邮件地址
+      body: |
+        嘿 {username}!
+
+        有人（希望是您！）已在 {forum} 上将此电子邮件地址更改为新地址。
+
+        如果这是您自己操作的，只需点击以下链接即可确认您的电子邮件：
+        {url}
+
+        如果不是您操作的，请忽略此邮件。
+
+    # 用户要求重置密码时，发送的电子邮件
+    reset_password:
+      subject: 重置您的密码
+      body: |
+        嘿 {username}!
+
+        有人（希望是您！）在 {forum} 上为您的帐户提交了忘记密码请求。
+
+        如果是您本人，请点击以下链接重置您的密码：
+        {url}
+
+        如果您不想更改密码，只需忽略此电子邮件即可，不会有任何影响。
+
+    # 测试邮件配置
+    send_test:
+      subject: Forumkit 邮件测试
+      body: |
+        嘿 {username}!
+
+        这是一封测试邮件，用于确认您的Forumkit邮件配置是否工作正常。
+
+        如果您本人操作，这封邮件意味着您的配置工作正常！
+
+        如果不是您本人操作，请忽略此邮件。
+
+  ##
+  # 重用
+  ##
+
+  # 由两个或多个唯一键引用
+  ref:
+    all_discussions: 所有讨论
+    change_email: 更改电子邮件
+    change_password: 更改密码
+    color: 颜色 # 被 forumkit-tags.yml 引用
+    confirm_password: 确认密码
+    confirm_email: 确认电子邮件
+    confirmation_email_sent: "我们已向{email}发送了确认电子邮件。如果它未立即到达，请检查您的垃圾邮件文件夹。"
+    custom_footer_text: 在页面最底部添加要显示的HTML。
+    custom_footer_title: 编辑自定义页脚
+    custom_header_text: "在页面顶部（位于Forumkit自己的页眉之上）添加要显示的HTML。"
+    custom_header_title: 编辑自定义页眉
+    delete: 删除
+    delete_forever: 永久删除
+    discussions: 讨论 # 被 forumkit-statistics.yml 引用
+    edit: 编辑
+    edit_user: 编辑用户
+    email: 电子邮件
+    extensions: 扩展
+    generic_confirmation_message: "您确定要继续吗？此操作无法撤销。"
+    icon: Icon
+    icon_text: "输入任何<a>FontAwesome</a>图标类的名称，<em>包括</em><code>fas fa-</code>前缀。"
+    load_more: 加载更多
+    loading: 加载中...
+    log_in: 登录
+    log_out: 登出
+    mark_all_as_read: 标记全部为已读
+    never: 从不
+    new_token: 新令牌
+    next_page: 下一页
+    notifications: 通知
+    okay: 确定 # 被 forumkit-tags.yml 引用
+    password: 密码
+    posts: 动态 # 被 forumkit-statistics.yml 引用
+    previous_page: 上一页
+    remove: 移除
+    rename: 重命名
+    reply: 回复 # 被 forumkit-mentions.yml 引用
+    reset_your_password: 重置您的密码
+    restore: 恢复
+    save_changes: 保存更改
+    search_users: 搜索用户 # 被 forumkit-suspend.yml, forumkit-tags.yml 引用
+    security: 安全
+    settings: 设置
+    sign_up: 注册
+    some_others: "{count, plural, one {# 其他} other {# 其他}}" # 被 forumkit-likes.yml, forumkit-mentions.yml 引用
+    new_a_discussion: 撰写新讨论
+    username: 用户名
+    users: 用户 # 被 forumkit-statistics.yml 引用
+    view: 查看
+    write_a_reply: 编写回复...
+    you: 您 # 被 forumkit-likes.yml, forumkit-mentions.yml 引用
+
+  ##
+  # 组名
+  ##
+
+  # 默认组名称
+  group:
+    admin: 管理员
+    admins: 管理组
+    guest: 访客
+    guests: 访客组
+    member: 会员
+    members: 会员组
+    mod: 版主
+    mods: 版主组

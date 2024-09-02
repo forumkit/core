@@ -1,0 +1,216 @@
+.NotificationList {
+  overflow: hidden;
+
+  .App-primaryControl > button:not(:last-of-type) {
+    margin-right: 12px;
+  }
+
+  &-header {
+    @media @tablet-up {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--control-bg);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h4 {
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 0;
+        color: var(--muted-color);
+      }
+    }
+
+    // 将所有标记为已读按钮
+    .Button {
+      padding: 0;
+      text-decoration: none;
+
+      // NotificationList 可能作为下拉菜单显示在抽屉内 - 但抽屉可能应用了 .light-contents（）。
+      // 在这种情况下，我们需要将按钮的样式重置为正常。
+      & when (@config-colored-header = true) {
+        color: var(--control-color);
+
+        &:hover,
+        &:focus {
+          color: var(--link-color);
+        }
+      }
+
+      .add-keyboard-focus-ring();
+      .add-keyboard-focus-ring-offset(4px);
+
+      .icon {
+        margin-right: 0;
+      }
+    }
+  }
+
+  // 通知为空时显示的消息
+  &-empty {
+    color: var(--muted-color);
+    text-align: center;
+    padding: 50px 0;
+    font-size: 16px;
+  }
+}
+
+.NotificationGroup {
+  border-top: 1px solid var(--control-bg);
+  margin-top: -1px;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &-header {
+    font-weight: bold;
+    color: var(--heading-color) !important;
+    padding: 8px 16px;
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+
+    // 防止轮廓外溢
+    .add-keyboard-focus-ring-offset(-1px);
+
+    &, span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-badges {
+    --overlap: 13px;
+
+    margin-right: 8px;
+    padding-right: var(--overlap);
+
+    .Badge {
+      margin-right: calc(~"0px - var(--overlap)");
+      position: relative;
+      .Badge--size(21px);
+    }
+  }
+
+  &-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.Notification {
+  padding: 8px 16px;
+  color: var(--muted-color) !important; // 需要重写应用于header的.light-contents
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+
+  grid-template-areas:
+    "avatar icon title   button"
+    "x      x    excerpt excerpt";
+
+  align-items: baseline;
+  row-gap: 1px;
+  column-gap: 6px;
+
+  // 防止轮廓外溢
+  .add-keyboard-focus-ring-offset(-1px);
+
+  &.unread {
+    background: var(--control-bg);
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    text-decoration: none;
+    background: var(--control-bg);
+
+    .Notification-action {
+      opacity: 1;
+    }
+  }
+
+  .Avatar {
+    .Avatar--size(24px);
+    grid-area: avatar;
+  }
+
+  // 由于图像和空元素没有基线，因此与基线对齐将不起作用。相反，我们需要做一些手动的黑客来修复，否则它们将无法正确垂直对齐。
+  img.Avatar,
+  .Avatar:empty {
+    align-self: flex-start;
+    margin-top: -2px;
+  }
+
+  &-icon {
+    font-size: 14px;
+    grid-area: icon;
+  }
+
+  &-title {
+    grid-area: title;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  &-content {
+    line-height: 19px;
+    margin-right: 8px;
+
+    .username {
+      font-weight: bold;
+    }
+  }
+
+  time {
+    line-height: inherit;
+    font-size: 11px;
+    line-height: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &-action {
+    line-height: inherit;
+    padding: 0;
+    opacity: 0;
+
+    .add-keyboard-focus-ring();
+    .add-keyboard-focus-ring-offset(4px);
+
+    grid-area: button;
+
+    // 需要更多的特异性来修复悬停/焦点样式不适用于下拉
+    .Notification & when (@config-colored-header = true) {
+      color: var(--control-color);
+
+      &:hover,
+      &:focus {
+        color: var(--link-color);
+      }
+    }
+
+    .icon {
+      font-size: 13px;
+      margin-right: 0;
+    }
+  }
+
+  &-excerpt {
+    grid-area: excerpt;
+    color: var(--muted-more-color);
+    font-size: 11px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
