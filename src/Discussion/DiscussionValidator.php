@@ -9,7 +9,7 @@ class DiscussionValidator extends AbstractValidator
     protected $rules = [
         'title' => [
             'required',
-            'min:2',
+            'min:3',
             'max:80'
         ]
     ];

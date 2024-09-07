@@ -46,14 +46,14 @@ export default class BasicsPage<CustomAttrs extends IPageAttrs = IPageAttrs> ext
       <div className="Form">
         {this.buildSettingComponent({
           type: 'text',
-          setting: 'forum_title',
-          label: app.translator.trans('core.admin.basics.forum_title_heading'),
+          setting: 'site_name',
+          label: app.translator.trans('core.admin.basics.site_name'),
         })}
         {this.buildSettingComponent({
           type: 'text',
-          setting: 'forum_description',
-          label: app.translator.trans('core.admin.basics.forum_description_heading'),
-          help: app.translator.trans('core.admin.basics.forum_description_text'),
+          setting: 'site_description',
+          label: app.translator.trans('core.admin.basics.site_description'),
+          help: app.translator.trans('core.admin.basics.site_description_text'),
         })}
 
         {Object.keys(this.localeOptions).length > 1 && (

@@ -31,7 +31,7 @@ trait AccountActivationMailerTrait
         return [
             'username' => $user->display_name,
             'url' => $this->url->to('forum')->route('confirmEmail', ['token' => $token->token]),
-            'forum' => $this->settings->get('forum_title')
+            'forum' => $this->settings->get('site_name')
         ];
     }
 

@@ -26,7 +26,7 @@ class SessionServiceProvider extends AbstractServiceProvider
             $config = $container->make(Config::class);
 
             /**
-             * Default to the file driver already defined by Laravel.
+             * 默认情况下使用Laravel已经定义的文件驱动。
              *
              * @see \Illuminate\Session\SessionManager::createFileDriver()
              */

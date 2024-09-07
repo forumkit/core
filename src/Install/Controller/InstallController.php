@@ -36,10 +36,10 @@ class InstallController implements RequestHandlerInterface
     protected $rememberer;
 
     /**
-     * InstallController constructor.
-     * @param Installation $installation
-     * @param SessionAuthenticator $authenticator
-     * @param Rememberer $rememberer
+     * InstallController 构造函数
+     * @param Installation $installation 安装服务实例，用于处理安装流程
+     * @param SessionAuthenticator $authenticator 会话认证器实例，用于处理会话认证
+     * @param Rememberer $rememberer 记住器实例，用于处理用户的登录记忆功能
      */
     public function __construct(Installation $installation, SessionAuthenticator $authenticator, Rememberer $rememberer)
     {
@@ -57,7 +57,7 @@ class InstallController implements RequestHandlerInterface
         $input = $request->getParsedBody();
         $baseUrl = BaseUrl::fromUri($request->getUri());
 
-        // An access token we will use to auto-login the admin at the end of installation
+        // 生成一个访问令牌，用于在安装结束时自动登录管理员
         $accessToken = Str::random(40);
 
         try {
@@ -67,9 +67,9 @@ class InstallController implements RequestHandlerInterface
                 ->adminUser($this->makeAdminUser($input))
                 ->accessToken($accessToken)
                 ->settings([
-                    'forum_title' => Arr::get($input, 'forumTitle'),
+                    'site_name' => Arr::get($input, 'forumTitle'),
                     'mail_from' => $baseUrl->toEmail('noreply'),
-                    'welcome_title' => 'Welcome to '.Arr::get($input, 'forumTitle'),
+                  //  'welcome_title' => 'Welcome to '.Arr::get($input, 'forumTitle'),
                 ])
                 ->build();
         } catch (ValidationFailed $e) {
@@ -83,8 +83,8 @@ class InstallController implements RequestHandlerInterface
         }
 
         $session = $request->getAttribute('session');
-        // Because the Eloquent models cannot be used yet, we create a temporary in-memory object
-        // that won't interact with the database but can be passed to the authenticator and rememberer
+        // 由于Eloquent模型此时可能还不能使用，我们创建一个临时的内存对象
+        // 该对象不会与数据库交互，但可以传递给认证器和记住器
         $token = new RememberAccessToken();
         $token->token = $accessToken;
         $this->authenticator->logIn($session, $token);

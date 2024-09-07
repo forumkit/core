@@ -52,7 +52,7 @@ class User extends AbstractModel
     use HasEagerLimit;
 
     /**
-     * The attributes that should be mutated to dates.
+     * 将某些属性转换为日期。
      *
      * @var array
      */
@@ -64,65 +64,62 @@ class User extends AbstractModel
     ];
 
     /**
-     * An array of permissions that this user has.
+     * 用户拥有的权限。
      *
      * @var string[]|null
      */
     protected $permissions = null;
 
     /**
-     * An array of callables, through each of which the user's list of groups is passed
-     * before being returned.
+     * 一个可调用对象数组，在返回之前，通过每个可调用对象传递用户的组列表。
      */
     protected static $groupProcessors = [];
 
     /**
-     * An array of registered user preferences. Each preference is defined with
-     * a key, and its value is an array containing the following keys:.
+     * 已注册的用户偏好。每个偏好都有一个键，其值是一个包含以下键的数组：
      *
-     * - transformer: a callback that confines the value of the preference
-     * - default: a default value if the preference isn't set
+     * - transformer: 用于限制偏好值的回调
+     * - default: 如果未设置偏好，则为默认值
      *
      * @var array
      */
     protected static $preferences = [];
 
     /**
-     * A driver for getting display names.
+     * 用于获取显示名称的驱动。
      *
      * @var DriverInterface
      */
     protected static $displayNameDriver;
 
     /**
-     * The hasher with which to hash passwords.
+     * 用于散列的哈希器。
      *
      * @var Hasher
      */
     protected static $hasher;
 
     /**
-     * The access gate.
+     * 访问网关。
      *
      * @var Access\Gate
      */
     protected static $gate;
 
     /**
-     * Callbacks to check passwords.
+     * 密码检查器。
      *
      * @var array
      */
     protected static $passwordCheckers;
 
     /**
-     * Difference from the current `last_seen` attribute value before `updateLastSeen()`
-     * will update the attribute on the DB. Measured in seconds.
+     * 在 `updateLastSeen()` 更新属性之前的`last_seen`属性值与当前值的差异。以秒为单位。re `updateLastSeen()`
      */
     private const LAST_SEEN_UPDATE_DIFF = 180;
 
     /**
-     * Boot the model.
+     * 启动模型。
      *
      * @return void
      */
@@ -130,7 +127,7 @@ class User extends AbstractModel
     {
         parent::boot();
 
-        // Don't allow the root admin to be deleted.
+        // 不允许删除根管理员。
         static::deleting(function (self $user) {
             if ($user->id == 1) {
                 throw new DomainException('Cannot delete the root admin');
@@ -145,7 +142,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Register a new user.
+     * 注册新用户。
      *
      * @param string $username
      * @param string $email
@@ -175,7 +172,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Set the display name driver.
+     * 设置显示名称的驱动。
      *
      * @param DriverInterface $driver
      */
@@ -190,7 +187,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Rename the user.
+     * 重命名用户。
      *
      * @param string $username
      * @return $this
@@ -208,7 +205,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Change the user's email.
+     * 更改用户的电子邮件。
      *
      * @param string $email
      * @return $this
@@ -225,7 +222,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Request that the user's email be changed.
+     * 请求更改用户的电子邮件。
      *
      * @param string $email
      * @return $this
@@ -240,7 +237,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Change the user's password.
+     * 更改用户的密码。
      *
      * @param string $password
      * @return $this
@@ -255,7 +252,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Set the password attribute, storing it as a hash.
+     * 设置密码属性，将其存储为哈希。
      *
      * @param string $value
      */
@@ -265,7 +262,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Mark all discussions as read.
+     * 标记所有讨论为已读。
      *
      * @return $this
      */
@@ -277,7 +274,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Mark all notifications as read.
+     * 标记所有通知为已读。
      *
      * @return $this
      */
@@ -289,7 +286,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Change the path of the user avatar.
+     * 更改用户头像的路径。
      *
      * @param string|null $path
      * @return $this
@@ -304,7 +301,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the URL of the user's avatar.
+     * 获取用户的头像URL。
      *
      * @param string|null $value
      * @return string
@@ -319,7 +316,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the user's display name.
+     * 获取用户的显示名称。
      *
      * @return string
      */
@@ -329,7 +326,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check if a given password matches the user's password.
+     * 检查给定密码是否与用户的密码匹配。
      *
      * @param string $password
      * @return bool
@@ -352,7 +349,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Activate the user's account.
+     * 激活用户的帐户。
      *
      * @return $this
      */
@@ -368,7 +365,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check whether the user has a certain permission based on their groups.
+     * 检查用户是否具有某个权限。
      *
      * @param string $permission
      * @return bool
@@ -383,8 +380,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check whether the user has a permission that is like the given string,
-     * based on their groups.
+     * 检查用户是否具有类似给定字符串的权限。
      *
      * @param string $match
      * @return bool
@@ -405,8 +401,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the notification types that should be alerted to this user, according
-     * to their preferences.
+     * 根据用户偏好获取应提醒用户的通知类型。
      *
      * @return array
      */
@@ -418,7 +413,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the number of unread notifications for the user.
+     * 获取用户未读通知的数量。
      *
      * @return int
      */
@@ -428,7 +423,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Return query builder for all notifications that have not been read yet.
+     * 返回尚未读取的所有通知的查询生成器。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -442,7 +437,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get all notifications that have not been read yet.
+     * 获取所有未读通知。
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -452,7 +447,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the number of new, unseen notifications for the user.
+     * 获取用户的新通知数量。
      *
      * @return int
      */
@@ -464,8 +459,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the values of all registered preferences for this user, by
-     * transforming their stored preferences and merging them with the defaults.
+     * 通过转换用户存储的首选项并将其与默认值合并，获取该用户的所有已注册首选项的值。
      *
      * @param string|null $value
      * @return array
@@ -482,7 +476,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Encode an array of preferences for storage in the database.
+     * 对偏好进行编码，以在数据库中存储。
      *
      * @param mixed $value
      */
@@ -492,8 +486,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check whether or not the user should receive an alert for a notification
-     * type.
+     * 检查用户是否应接收特定类型的通知。
      *
      * @param string $type
      * @return bool
@@ -504,8 +497,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check whether or not the user should receive an email for a notification
-     * type.
+     * 检查用户是否应接收特定类型的电子邮件通知。
      *
      * @param string $type
      * @return bool
@@ -516,7 +508,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the value of a preference for this user.
+     * 获取用户的偏好值。
      *
      * @param string $key
      * @param mixed $default
@@ -528,7 +520,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Set the value of a preference for this user.
+     * 设置用户的偏好值。
      *
      * @param string $key
      * @param mixed $value
@@ -552,7 +544,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Set the user as being last seen just now.
+     * 将用户标记为刚刚看过。
      *
      * @return $this
      */
@@ -568,7 +560,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check whether or not the user is an administrator.
+     * 检查用户是否为管理员。
      *
      * @return bool
      */
@@ -578,7 +570,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Check whether or not the user is a guest.
+     * 检查用户是否为访客。
      *
      * @return bool
      */
@@ -588,12 +580,10 @@ class User extends AbstractModel
     }
 
     /**
-     * Ensure the current user is allowed to do something.
+     * 确保当前用户有权执行某项操作。
      *
-     * If the condition is not met, an exception will be thrown that signals the
-     * lack of permissions. This is about *authorization*, i.e. retrying such a
-     * request / operation without a change in permissions (or using another
-     * user account) is pointless.
+     * 如果条件不满足，将抛出异常，表示权限不足。
+     * 这是关于授权，即重新尝试操作/请求（或使用其他用户帐户）没有改变权限。
      *
      * @param bool $condition
      * @throws PermissionDeniedException
@@ -606,11 +596,10 @@ class User extends AbstractModel
     }
 
     /**
-     * Ensure the given actor is authenticated.
+     * 确保给定的参与者已注册。
      *
-     * This will throw an exception for guest users, signaling that
-     * *authorization* failed. Thus, they could retry the operation after
-     * logging in (or using other means of authentication).
+     * 如果用户是访客，将抛出异常，表示授权失败。
+     * 因此，他们可以在登录后（或使用其他认证方式）重试操作。
      *
      * @throws NotAuthenticatedException
      */
@@ -642,7 +631,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's posts.
+     * 定义与用户帖子的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -652,7 +641,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's discussions.
+     * 定义与用户讨论的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -662,7 +651,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's read discussions.
+     * 定义与用户已读讨论的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Discussion>
      */
@@ -672,7 +661,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's groups.
+     * 定义与用户组的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -687,7 +676,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's notifications.
+     * 定义与用户通知的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -697,7 +686,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's email tokens.
+     * 定义与用户电子邮件令牌的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -707,7 +696,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's email tokens.
+     * 定义与用户密码令牌的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -717,8 +706,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the permissions of all of the groups that
-     * the user is in.
+     * 定义与用户所在组的所有权限的关系。
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -726,10 +714,8 @@ class User extends AbstractModel
     {
         $groupIds = [Group::GUEST_ID];
 
-        // If a user's account hasn't been activated, they are essentially no
-        // more than a guest. If they are activated, we can give them the
-        // standard 'member' group, as well as any other groups they've been
-        // assigned to.
+        // 如果用户的账户未激活，那么他们基本上只是访客。如果他们已激活，我们可以给他们
+        // 标准'成员'组，以及他们被分配到的任何其他组。
         if ($this->is_email_confirmed) {
             $groupIds = array_merge($groupIds, [Group::MEMBER_ID], $this->groups->pluck('id')->all());
         }
@@ -742,7 +728,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get a list of permissions that the user has.
+     * 获取用户拥有的权限列表。
      *
      * @return string[]
      */
@@ -756,7 +742,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Define the relationship with the user's access tokens.
+     * 定义与用户访问令牌的关系。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -766,7 +752,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the user's login providers.
+     * 获取用户的登录提供者。
      */
     public function loginProviders()
     {
@@ -794,7 +780,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Set the hasher with which to hash passwords.
+     * 设置用于散列的哈希器。
      *
      * @param Hasher $hasher
      *
@@ -806,7 +792,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Register a preference with a transformer and a default value.
+     * 注册一个带有转换器和默认值的偏好。
      *
      * @param string $key
      * @param callable $transformer
@@ -820,7 +806,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Register a callback that processes a user's list of groups.
+     * 注册一个处理用户组列表的回调。
      *
      * @param callable $callback
      * @return void
@@ -833,8 +819,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Get the key for a preference which flags whether or not the user will
-     * receive a notification for $type via $method.
+     * 获取表示用户将通过 $method 接收 $type 通知的偏好键。
      *
      * @param string $type
      * @param string $method
@@ -846,7 +831,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Refresh the user's comments count.
+     * 刷新用户的评论数量。
      *
      * @return $this
      */
@@ -861,7 +846,7 @@ class User extends AbstractModel
     }
 
     /**
-     * Refresh the user's comments count.
+     * 刷新用户的讨论数量。
      *
      * @return $this
      */

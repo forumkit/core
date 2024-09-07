@@ -65,8 +65,8 @@ class ForumSerializer extends AbstractSerializer
     protected function getDefaultAttributes($model): array
     {
         $attributes = [
-            'title' => $this->settings->get('forum_title'),
-            'description' => $this->settings->get('forum_description'),
+            'title' => $this->settings->get('site_name'),
+            'description' => $this->settings->get('site_description'),
             'showLanguageSelector' => (bool) $this->settings->get('show_language_selector', true),
             'baseUrl' => $url = $this->url->to('forum')->base(),
             'basePath' => $path = parse_url($url, PHP_URL_PATH) ?: '',

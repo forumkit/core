@@ -6,7 +6,7 @@ use Illuminate\Contracts\Config\Repository;
 
 if (! function_exists('resolve')) {
     /**
-     * Resolve a service from the container.
+     * 从容器中解析服务。
      *
      * @template T
      * @param string|class-string<T> $name
@@ -19,9 +19,9 @@ if (! function_exists('resolve')) {
     }
 }
 
-// The following are all deprecated perpetually.
-// They are needed by some laravel components we use (e.g. task scheduling)
-// They should NOT be used in extension code.
+// 以下所有内容都已永久弃用。
+// 我们使用的一些laravel组件（例如任务调度）需要它们。
+// 扩展代码中不应使用它们。
 
 if (! function_exists('app')) {
     /**
@@ -45,7 +45,7 @@ if (! function_exists('base_path')) {
     /**
      * @deprecated perpetually.
      *
-     * Get the path to the base of the install.
+     * 获取安装基础路径。
      *
      * @param  string  $path
      * @return string
@@ -60,7 +60,7 @@ if (! function_exists('public_path')) {
     /**
      * @deprecated perpetually.
      *
-     * Get the path to the public folder.
+     * 获取public文件夹的路径。
      *
      * @param  string  $path
      * @return string
@@ -75,7 +75,7 @@ if (! function_exists('storage_path')) {
     /**
      * @deprecated perpetually.
      *
-     * Get the path to the storage folder.
+     * 获取storage文件夹的路径。
      *
      * @param  string  $path
      * @return string
@@ -90,7 +90,7 @@ if (! function_exists('event')) {
     /**
      * @deprecated perpetually.
      *
-     * Fire an event and call the listeners.
+     * 触发事件并调用监听器。
      *
      * @param  string|object  $event
      * @param  mixed  $payload
@@ -105,7 +105,7 @@ if (! function_exists('event')) {
 
 if (! function_exists('config')) {
     /**
-     * @deprecated do not use, will be transferred to forumkit/laravel-helpers.
+     * @deprecated 请勿使用，将转移到forumkit/laravel-helpers。
      */
     function config(string $key, $default = null)
     {

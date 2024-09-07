@@ -3,8 +3,7 @@ import ItemList from '../../common/utils/ItemList';
 import listItems from '../../common/helpers/listItems';
 
 /**
- * The `HeaderPrimary` component displays primary header controls. On the
- * default skin, these are shown just to the right of the forum title.
+ * `HeaderPrimary` 组件用于显示主要的头部控件。在默认皮肤中，这些控件显示在论坛标题的右侧。
  */
 export default class HeaderPrimary extends Component {
   view() {
@@ -12,14 +11,13 @@ export default class HeaderPrimary extends Component {
   }
 
   config(isInitialized, context) {
-    // Since this component is 'above' the content of the page (that is, it is a
-    // part of the global UI that persists between routes), we will flag the DOM
-    // to be retained across route changes.
+    // 由于这个组件位于页面内容的上方（即，它是全局UI的一部分，在路由之间保持不变），
+    // 我们将标记DOM，以便在路由更改时保留它。
     context.retain = true;
   }
 
   /**
-   * Build an item list for the controls.
+   * 构建控件的项列表。
    *
    * @return {ItemList<import('mithril').Children>}
    */

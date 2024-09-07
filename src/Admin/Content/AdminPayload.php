@@ -109,11 +109,10 @@ class AdminPayload
         $document->payload['sessionDriver'] = $this->appInfo->identifySessionDriver(true);
 
         /**
-         * Used in the admin user list. Implemented as this as it matches the API in forumkit/statistics.
-         * If forumkit/statistics ext is enabled, it will override this data with its own stats.
+         * 用于管理员用户列表。实现方式与此匹配 forumkit/statistics 中的API。
+         * 如果启用了 forumkit/statistics 扩展，它将用自己的统计信息覆盖此数据。
          *
-         * This allows the front-end code to be simpler and use one single source of truth to pull the
-         * total user count from.
+         * 这使得前端代码可以更简单，并使用单一的真实数据源来拉取总用户数量。
          */
         $document->payload['modelStatistics'] = [
             'users' => [

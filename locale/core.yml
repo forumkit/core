@@ -40,9 +40,9 @@ core:
       description: "设置您的论坛标题、语言和其他基本设置。"
       display_name_heading: 用户显示名称
       display_name_text: 选择用于用户显示名称的驱动程序。默认情况下，显示用户名。
-      forum_description_heading: 论坛描述
-      forum_description_text: 输入一两句简短的句子来描述您的社区。这将在元标签中显示并在搜索引擎中出现。
-      forum_title_heading: 论坛标题
+      site_description: 网站描述
+      site_description_text: 输入一两句简短的句子来描述您的站点。这将在元标签中显示并在搜索引擎中出现。
+      site_name: 网站名称
       home_page_heading: 主页
       home_page_text: 选择用户访问您的论坛时首先看到的页面。
       show_language_selector_label: 显示语言选择器

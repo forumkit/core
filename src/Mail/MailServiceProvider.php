@@ -68,7 +68,7 @@ class MailServiceProvider extends AbstractServiceProvider
             }
 
             $settings = $container->make(SettingsRepositoryInterface::class);
-            $mailer->alwaysFrom($settings->get('mail_from'), $settings->get('forum_title'));
+            $mailer->alwaysFrom($settings->get('mail_from'), $settings->get('site_name'));
 
             return $mailer;
         });

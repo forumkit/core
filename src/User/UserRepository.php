@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 class UserRepository
 {
     /**
-     * Get a new query builder for the users table.
+     * 获取一个新的用户表查询构造器。
      *
      * @return Builder<User>
      */
@@ -17,8 +17,7 @@ class UserRepository
     }
 
     /**
-     * Find a user by ID, optionally making sure it is visible to a certain
-     * user, or throw an exception.
+     * 通过ID查找用户，可选地确保它对某个用户可见，或者抛出异常。
      *
      * @param int|string $id
      * @param User|null $actor
@@ -34,8 +33,7 @@ class UserRepository
     }
 
     /**
-     * Find a user by username, optionally making sure it is visible to a certain
-     * user, or throw an exception.
+     * 通过用户名查找用户，可选地确保它对某个用户可见，或者抛出异常。
      *
      * @param string $username
      * @param User|null $actor
@@ -51,7 +49,7 @@ class UserRepository
     }
 
     /**
-     * Find a user by an identification (username or email).
+     * 通过标识（用户名或电子邮件）查找用户。
      *
      * @param string $identification
      * @return User|null
@@ -64,7 +62,7 @@ class UserRepository
     }
 
     /**
-     * Find a user by email.
+     * 通过电子邮件查找用户。
      *
      * @param string $email
      * @return User|null
@@ -75,7 +73,7 @@ class UserRepository
     }
 
     /**
-     * Get the ID of a user with the given username.
+     * 获取具有给定用户名的用户的ID。
      *
      * @param string $username
      * @param User|null $actor
@@ -96,8 +94,8 @@ class UserRepository
     }
 
     /**
-     * Find users by matching a string of words against their username,
-     * optionally making sure they are visible to a certain user.
+     * 通过将一串单词与用户名进行匹配来查找用户，
+     * 可选地确保他们对某个用户可见。
      *
      * @param string $string
      * @param User|null $actor
@@ -115,7 +113,7 @@ class UserRepository
     }
 
     /**
-     * Scope a query to only include records that are visible to a user.
+     * 将查询范围限定为仅包括对某个用户可见的记录。
      *
      * @param Builder<User> $query
      * @param User|null $actor
@@ -131,7 +129,7 @@ class UserRepository
     }
 
     /**
-     * Escape special characters that can be used as wildcards in a LIKE query.
+     * 转义可在LIKE查询中用作通配符的特殊字符。
      *
      * @param string $string
      * @return string

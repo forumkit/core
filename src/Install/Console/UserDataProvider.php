@@ -102,9 +102,9 @@ class UserDataProvider implements DataProviderInterface
         $title = $this->ask('Forum title:');
 
         return [
-            'forum_title' => $title,
+            'site_name' => $title,
             'mail_from' => $this->baseUrl->toEmail('noreply'),
-            'welcome_title' => 'Welcome to '.$title,
+            // 'welcome_title' => 'Welcome to '.$title,
         ];
     }
 
