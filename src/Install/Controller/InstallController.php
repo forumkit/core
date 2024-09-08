@@ -69,7 +69,6 @@ class InstallController implements RequestHandlerInterface
                 ->settings([
                     'site_name' => Arr::get($input, 'forumTitle'),
                     'mail_from' => $baseUrl->toEmail('noreply'),
-                  //  'welcome_title' => 'Welcome to '.Arr::get($input, 'forumTitle'),
                 ])
                 ->build();
         } catch (ValidationFailed $e) {

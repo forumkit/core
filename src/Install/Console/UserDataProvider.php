@@ -104,7 +104,6 @@ class UserDataProvider implements DataProviderInterface
         return [
             'site_name' => $title,
             'mail_from' => $this->baseUrl->toEmail('noreply'),
-            // 'welcome_title' => 'Welcome to '.$title,
         ];
     }
 
