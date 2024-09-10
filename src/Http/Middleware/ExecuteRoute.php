@@ -10,7 +10,7 @@ use Psr\Http\Server\RequestHandlerInterface as Handler;
 class ExecuteRoute implements Middleware
 {
     /**
-     * Executes the route handler resolved in ResolveRoute.
+     * 执行 ResolveRoute 中解析的路由处理程序。
      */
     public function process(Request $request, Handler $handler): Response
     {

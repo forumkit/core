@@ -20,27 +20,17 @@
         color: #7E96B3;
       }
       .container {
-        max-width: 515px;
+        max-width: 500px;
         margin: 0 auto;
-        padding: 100px 30px;
+        padding: 30px;
         text-align: center;
       }
       a {
-        color: #e7652e;
+        color: #10b981;
         text-decoration: none;
       }
       a:hover {
         text-decoration: underline;
-      }
-
-      h1 {
-        margin-bottom: 40px;
-      }
-      h2 {
-        font-size: 28px;
-        font-weight: normal;
-        color: #3C5675;
-        margin-bottom: 0;
       }
 
       form {
@@ -58,16 +48,16 @@
         border-bottom-right-radius: 4px;
       }
       .FormField input {
-        background: #EDF2F7;
+        background: #E6F7EC;
         margin: 0 0 1px;
         border: 2px solid transparent;
         transition: background 0.2s, border-color 0.2s, color 0.2s;
         width: 100%;
-        padding: 15px 15px 15px 180px;
+        padding: 10px 10px 10px 180px;
         box-sizing: border-box;
       }
       .FormField input:focus {
-        border-color: #e7652e;
+        border-color: #10b981;
         background: #fff;
         color: #444;
         outline: none;
@@ -78,13 +68,13 @@
         text-align: right;
         margin-right: -160px;
         position: relative;
-        margin-top: 18px;
+        margin-top: 12px;
         font-size: 14px;
         pointer-events: none;
         opacity: 0.7;
       }
       button {
-        background: #3C5675;
+        background: #10b981;
         color: #fff;
         border: 0;
         font-weight: bold;
@@ -103,29 +93,6 @@
         padding: 15px 20px;
         border-radius: 4px;
         margin-bottom: 20px;
-      }
-
-      .animated {
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-
-        -webkit-animation-duration: 0.5s;
-        animation-duration: 0.5s;
-
-        animation-delay: 1.7s;
-        -webkit-animation-delay: 1.7s;
-      }
-      @-webkit-keyframes fadeIn {
-        0% {opacity: 0}
-        100% {opacity: 1}
-      }
-      @keyframes fadeIn {
-        0% {opacity: 0}
-        100% {opacity: 1}
-      }
-      .fadeIn {
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
       }
 
       .Problems {
@@ -160,11 +127,7 @@
 
   <body>
     <div class="container">
-      <h1>
-        <?php echo file_get_contents(__DIR__.'/logo.svg'); ?>
-      </h1>
-
-      <div class="animated fadeIn">
+      <div>
         <?php echo $content; ?>
       </div>
     </div>

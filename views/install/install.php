@@ -1,12 +1,10 @@
-<h2>Install Forumkit</h2>
-
 <form method="post">
   <div id="error" style="display:none"></div>
 
   <div class="FormGroup">
     <div class="FormField">
       <label>Forum Title</label>
-      <input name="forumTitle">
+      <input name="forumTitle" value="Forumkit">
     </div>
   </div>
 

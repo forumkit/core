@@ -11,11 +11,11 @@ use Psr\Http\Server\RequestHandlerInterface as Handler;
 use Throwable;
 
 /**
- * Catch exceptions thrown in a PSR-15 middleware stack and handle them safely.
+ * 捕获在PSR-15中间件堆栈中抛出的异常，并安全地处理它们。
  *
- * All errors will be rendered using the provided formatter. In addition,
- * unknown errors will be passed on to one or multiple
- * {@see \Forumkit\Foundation\ErrorHandling\Reporter} instances.
+ * 所有错误都将使用提供的格式化程序进行渲染。此外，
+ * 未知错误将被传递给一个或多个
+ * {@see \Forumkit\Foundation\ErrorHandling\Reporter} 实例。
  */
 class HandleErrors implements Middleware
 {
@@ -42,7 +42,7 @@ class HandleErrors implements Middleware
     }
 
     /**
-     * Catch all errors that happen during further middleware execution.
+     * 捕获在后续中间件执行过程中发生的所有错误。
      */
     public function process(Request $request, Handler $handler): Response
     {

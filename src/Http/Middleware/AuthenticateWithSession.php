@@ -38,7 +38,7 @@ class AuthenticateWithSession implements Middleware
                 return $actor;
             }
 
-            // If this session used to have a token which is no longer valid we properly refresh the session
+            // 如果这个会话曾经有一个不再有效的令牌，我们会正确刷新会话
             $session->invalidate();
             $session->regenerateToken();
         }

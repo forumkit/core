@@ -41,8 +41,7 @@ class CollectGarbage implements Middleware
 
     private function collectGarbageSometimes()
     {
-        // In order to save performance, we only execute this query
-        // from time to time (with 2% chance).
+        // 为了节省性能，我们只不时执行此查询（有 2% 的几率）。
         if (! $this->hit()) {
             return;
         }
