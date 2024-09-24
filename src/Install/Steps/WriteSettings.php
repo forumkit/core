@@ -66,10 +66,10 @@ class WriteSettings implements Step
             'slug_driver_Forumkit\User\User' => 'default',
             'theme_colored_header' => '1',
             'theme_dark_mode' => '0',
-            'theme_primary_color' => '#10B981',
-            'theme_secondary_color' => '#4D698E',
+            'theme_primary_color' => '#1E87F0',
+            'theme_secondary_color' => '#1E87F0',
             'welcome_message' => '令人难以置信的轻量，使用现代技术构建的可扩展讨论社区框架，灵活且快速，可以帮助您更好地构建成功的网站。Forumkit 轻松创建设计精美、用户友好、响应迅速的交流论坛。',
-            'welcome_title' => '欢迎来到 Forumkit 社区',
+            'welcome_title' => '你好，我是 Forumkit,',
         ];
     }
 }

@@ -15,9 +15,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Not to be confused with the CreateAccessTokenController,
- * this controller is used to authenticate a user with credentials,
- * and return a system generated session-type access token.
+ * 注意不要与 CreateAccessTokenController 混淆，
+ * 此控制器用于通过用户凭证进行身份验证，
+ * 并返回一个系统生成的会话式访问令牌。
  */
 class CreateTokenController implements RequestHandlerInterface
 {
@@ -70,7 +70,7 @@ class CreateTokenController implements RequestHandlerInterface
             $token = SessionAccessToken::generate($user->id);
         }
 
-        // We do a first update here to log the IP/agent of the token creator, even if the token is never used afterwards
+        // 我们在这里进行第一次更新以记录令牌创建者的IP/代理，即使此后从未使用过令牌
         $token->touch($request);
 
         return new JsonResponse([

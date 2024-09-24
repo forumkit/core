@@ -40,8 +40,8 @@ class ForgotPasswordController implements RequestHandlerInterface
 
         $email = Arr::get($params, 'email');
 
-        // Prevents leaking user existence by not throwing an error.
-        // Prevents leaking user existence by duration by using a queued job.
+        // 通过不抛出错误来防止泄露用户存在信息
+        // 通过使用队列任务来进一步通过延迟处理来防止泄露用户存在信息的时间
         $this->queue->push(new RequestPasswordResetJob($email));
 
         return new EmptyResponse;

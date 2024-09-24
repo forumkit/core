@@ -19,7 +19,7 @@ class Factory implements FactoryContract
     }
 
     /**
-     * Get a cache store instance by name.
+     * 按名称获取缓存存储实例
      *
      * @param  string|null $name
      * @return Repository

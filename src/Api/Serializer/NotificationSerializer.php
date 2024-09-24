@@ -13,8 +13,7 @@ class NotificationSerializer extends AbstractSerializer
     protected $type = 'notifications';
 
     /**
-     * A map of notification types (key) to the serializer that should be used
-     * to output the notification's subject (value).
+     * 通知类型（键）到序列化器的映射，该序列化器应用于输出通知的主题（值）。
      *
      * @var array
      */

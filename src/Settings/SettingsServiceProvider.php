@@ -18,8 +18,8 @@ class SettingsServiceProvider extends AbstractServiceProvider
     {
         $this->container->singleton('forumkit.settings.default', function () {
             return new Collection([
-                'theme_primary_color' => '#10B981',
-                'theme_secondary_color' => '#10B981',
+                'theme_primary_color' => '#1E87F0',
+                'theme_secondary_color' => '#1E87F0',
             ]);
         });
 

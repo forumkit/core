@@ -31,12 +31,12 @@ abstract class AbstractCommand extends Command
     }
 
     /**
-     * Fire the command.
+     * 触发命令的执行
      */
     abstract protected function fire();
 
     /**
-     * Did the user pass the given option?
+     * 用户是否传递了给定的选项？
      *
      * @param string $name
      * @return bool
@@ -47,7 +47,7 @@ abstract class AbstractCommand extends Command
     }
 
     /**
-     * Send an info message to the user.
+     * 向用户发送一条信息消息
      *
      * @param string $message
      */
@@ -57,9 +57,9 @@ abstract class AbstractCommand extends Command
     }
 
     /**
-     * Send an error or warning message to the user.
+     * 向用户发送一条错误或警告消息
      *
-     * If possible, this will send the message via STDERR.
+     * 如果可能，此消息将通过 STDERR 发送
      *
      * @param string $message
      */

@@ -141,7 +141,7 @@ class ApiServiceProvider extends AbstractServiceProvider
     }
 
     /**
-     * Register notification serializers.
+     * 注册通知序列化器。
      */
     protected function setNotificationSerializers()
     {
@@ -153,7 +153,7 @@ class ApiServiceProvider extends AbstractServiceProvider
     }
 
     /**
-     * Populate the API routes.
+     * 填充API路由。
      *
      * @param RouteCollection $routes
      */

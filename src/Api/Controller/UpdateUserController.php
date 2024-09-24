@@ -50,8 +50,7 @@ class UpdateUserController extends AbstractShowController
             $this->serializer = CurrentUserSerializer::class;
         }
 
-        // Require the user's current password if they are attempting to change
-        // their own email address.
+        // 如果用户尝试更改自己的电子邮件地址，则需要提供当前密码
         if (isset($data['attributes']['email']) && $actor->id == $id) {
             $password = (string) Arr::get($request->getParsedBody(), 'meta.password');
 

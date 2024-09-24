@@ -55,9 +55,8 @@ class CreatePostController extends AbstractCreateController
             new PostReply($discussionId, $actor, $data, $ipAddress)
         );
 
-        // After replying, we assume that the user has seen all of the posts
-        // in the discussion; thus, we will mark the discussion as read if
-        // they are logged in.
+        // 回复后，我们假设用户已经查看了讨论中的所有帖子
+        // 因此，如果用户已登录，我们将标记该讨论为已读
         if ($actor->exists) {
             $this->bus->dispatch(
                 new ReadDiscussion($discussionId, $actor, $post->number)

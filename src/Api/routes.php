@@ -5,49 +5,49 @@ use Forumkit\Http\RouteCollection;
 use Forumkit\Http\RouteHandlerFactory;
 
 return function (RouteCollection $map, RouteHandlerFactory $route) {
-    // Get forum information
+    // 获取论坛信息
     $map->get(
         '/',
         'forum.show',
         $route->toController(Controller\ShowForumController::class)
     );
 
-    // List access tokens
+    // 列出访问令牌
     $map->get(
         '/access-tokens',
         'access-tokens.index',
         $route->toController(Controller\ListAccessTokensController::class)
     );
 
-    // List access tokens
+    // 创建访问令牌
     $map->post(
         '/access-tokens',
         'access-tokens.create',
         $route->toController(Controller\CreateAccessTokenController::class)
     );
 
-    // List access tokens
+    // 删除指定ID的访问令牌
     $map->delete(
         '/access-tokens/{id}',
         'access-tokens.delete',
         $route->toController(Controller\DeleteAccessTokenController::class)
     );
 
-    // Retrieve authentication token
+    // 获取认证令牌
     $map->post(
         '/token',
         'token',
         $route->toController(Controller\CreateTokenController::class)
     );
 
-    // Terminate all other sessions
+    // 终止所有其他会话
     $map->delete(
         '/sessions',
         'sessions.delete',
         $route->toController(Controller\TerminateAllOtherSessionsController::class)
     );
 
-    // Send forgot password email
+    // 发送忘记密码邮件
     $map->post(
         '/forgot',
         'forgot',
@@ -56,60 +56,60 @@ return function (RouteCollection $map, RouteHandlerFactory $route) {
 
     /*
     |--------------------------------------------------------------------------
-    | Users
+    | 用户
     |--------------------------------------------------------------------------
     */
 
-    // List users
+    // 列出用户
     $map->get(
         '/users',
         'users.index',
         $route->toController(Controller\ListUsersController::class)
     );
 
-    // Register a user
+    // 注册用户
     $map->post(
         '/users',
         'users.create',
         $route->toController(Controller\CreateUserController::class)
     );
 
-    // Get a single user
+    // 获取单个用户
     $map->get(
         '/users/{id}',
         'users.show',
         $route->toController(Controller\ShowUserController::class)
     );
 
-    // Edit a user
+    // 编辑用户
     $map->patch(
         '/users/{id}',
         'users.update',
         $route->toController(Controller\UpdateUserController::class)
     );
 
-    // Delete a user
+    // 删除用户
     $map->delete(
         '/users/{id}',
         'users.delete',
         $route->toController(Controller\DeleteUserController::class)
     );
 
-    // Upload avatar
+    // 上传头像
     $map->post(
         '/users/{id}/avatar',
         'users.avatar.upload',
         $route->toController(Controller\UploadAvatarController::class)
     );
 
-    // Remove avatar
+    // 删除头像
     $map->delete(
         '/users/{id}/avatar',
         'users.avatar.delete',
         $route->toController(Controller\DeleteAvatarController::class)
     );
 
-    // send confirmation email
+    // 发送确认邮件
     $map->post(
         '/users/{id}/send-confirmation',
         'users.confirmation.send',
@@ -118,32 +118,32 @@ return function (RouteCollection $map, RouteHandlerFactory $route) {
 
     /*
     |--------------------------------------------------------------------------
-    | Notifications
+    | 通知
     |--------------------------------------------------------------------------
     */
 
-    // List notifications for the current user
+    // 列出当前用户的通知
     $map->get(
         '/notifications',
         'notifications.index',
         $route->toController(Controller\ListNotificationsController::class)
     );
 
-    // Mark all notifications as read
+    // 标记所有通知为已读
     $map->post(
         '/notifications/read',
         'notifications.readAll',
         $route->toController(Controller\ReadAllNotificationsController::class)
     );
 
-    // Mark a single notification as read
+    // 标记单个通知为已读
     $map->patch(
         '/notifications/{id}',
         'notifications.update',
         $route->toController(Controller\UpdateNotificationController::class)
     );
 
-    // Delete all notifications for the current user.
+    // 删除当前用户的所有通知
     $map->delete(
         '/notifications',
         'notifications.deleteAll',
@@ -152,39 +152,39 @@ return function (RouteCollection $map, RouteHandlerFactory $route) {
 
     /*
     |--------------------------------------------------------------------------
-    | Discussions
+    | 讨论区
     |--------------------------------------------------------------------------
     */
 
-    // List discussions
+    // 列出所有讨论
     $map->get(
         '/discussions',
         'discussions.index',
         $route->toController(Controller\ListDiscussionsController::class)
     );
 
-    // Create a discussion
+    // 创建一个新讨论
     $map->post(
         '/discussions',
         'discussions.create',
         $route->toController(Controller\CreateDiscussionController::class)
     );
 
-    // Show a single discussion
+    // 显示单个讨论
     $map->get(
         '/discussions/{id}',
         'discussions.show',
         $route->toController(Controller\ShowDiscussionController::class)
     );
 
-    // Edit a discussion
+    // 编辑讨论
     $map->patch(
         '/discussions/{id}',
         'discussions.update',
         $route->toController(Controller\UpdateDiscussionController::class)
     );
 
-    // Delete a discussion
+    // 删除讨论
     $map->delete(
         '/discussions/{id}',
         'discussions.delete',
@@ -193,39 +193,39 @@ return function (RouteCollection $map, RouteHandlerFactory $route) {
 
     /*
     |--------------------------------------------------------------------------
-    | Posts
+    | 帖子
     |--------------------------------------------------------------------------
     */
 
-    // List posts, usually for a discussion
+    // 列出帖子，通常用于讨论区
     $map->get(
         '/posts',
         'posts.index',
         $route->toController(Controller\ListPostsController::class)
     );
 
-    // Create a post
+    // 创建一个新帖子
     $map->post(
         '/posts',
         'posts.create',
         $route->toController(Controller\CreatePostController::class)
     );
 
-    // Show a single or multiple posts by ID
+    // 显示单个或多个帖子
     $map->get(
         '/posts/{id}',
         'posts.show',
         $route->toController(Controller\ShowPostController::class)
     );
 
-    // Edit a post
+    // 编辑帖子
     $map->patch(
         '/posts/{id}',
         'posts.update',
         $route->toController(Controller\UpdatePostController::class)
     );
 
-    // Delete a post
+    // 删除帖子
     $map->delete(
         '/posts/{id}',
         'posts.delete',
@@ -234,39 +234,39 @@ return function (RouteCollection $map, RouteHandlerFactory $route) {
 
     /*
     |--------------------------------------------------------------------------
-    | Groups
+    | 用户组
     |--------------------------------------------------------------------------
     */
 
-    // List groups
+    // 列出所有用户组
     $map->get(
         '/groups',
         'groups.index',
         $route->toController(Controller\ListGroupsController::class)
     );
 
-    // Create a group
+    // 创建一个新用户组
     $map->post(
         '/groups',
         'groups.create',
         $route->toController(Controller\CreateGroupController::class)
     );
 
-    // Show a single group
+    // 显示单个用户组
     $map->get(
         '/groups/{id}',
         'groups.show',
         $route->toController(Controller\ShowGroupController::class)
     );
 
-    // Edit a group
+    // 编辑用户组
     $map->patch(
         '/groups/{id}',
         'groups.update',
         $route->toController(Controller\UpdateGroupController::class)
     );
 
-    // Delete a group
+    // 删除用户组
     $map->delete(
         '/groups/{id}',
         'groups.delete',
@@ -275,88 +275,88 @@ return function (RouteCollection $map, RouteHandlerFactory $route) {
 
     /*
     |--------------------------------------------------------------------------
-    | Administration
+    | 管理员操作
     |--------------------------------------------------------------------------
     */
 
-    // Toggle an extension
+    // 切换扩展的启用/禁用状态
     $map->patch(
         '/extensions/{name}',
         'extensions.update',
         $route->toController(Controller\UpdateExtensionController::class)
     );
 
-    // Uninstall an extension
+    // 卸载扩展
     $map->delete(
         '/extensions/{name}',
         'extensions.delete',
         $route->toController(Controller\UninstallExtensionController::class)
     );
 
-    // Get readme for an extension
+    // 获取扩展的README文件
     $map->get(
         '/extension-readmes/{name}',
         'extension-readmes.show',
         $route->toController(Controller\ShowExtensionReadmeController::class)
     );
 
-    // Update settings
+    // 更新设置
     $map->post(
         '/settings',
         'settings',
         $route->toController(Controller\SetSettingsController::class)
     );
 
-    // Update a permission
+    // 更新权限
     $map->post(
         '/permission',
         'permission',
         $route->toController(Controller\SetPermissionController::class)
     );
 
-    // Upload a logo
+    // 上传网站Logo
     $map->post(
         '/logo',
         'logo',
         $route->toController(Controller\UploadLogoController::class)
     );
 
-    // Remove the logo
+    // 删除网站Logo
     $map->delete(
         '/logo',
         'logo.delete',
         $route->toController(Controller\DeleteLogoController::class)
     );
 
-    // Upload a favicon
+    // 上传网站Favicon
     $map->post(
         '/favicon',
         'favicon',
         $route->toController(Controller\UploadFaviconController::class)
     );
 
-    // Remove the favicon
+    // 删除网站Favicon
     $map->delete(
         '/favicon',
         'favicon.delete',
         $route->toController(Controller\DeleteFaviconController::class)
     );
 
-    // Clear the cache
+    // 清除缓存
     $map->delete(
         '/cache',
         'cache.clear',
         $route->toController(Controller\ClearCacheController::class)
     );
 
-    // List available mail drivers, available fields and validation status
+    // 列出可用的邮件驱动、可用字段和验证状态
     $map->get(
         '/mail/settings',
         'mailSettings.index',
         $route->toController(Controller\ShowMailSettingsController::class)
     );
 
-    // Send test mail post
+    // 发送测试邮件
     $map->post(
         '/mail/test',
         'mailTest',

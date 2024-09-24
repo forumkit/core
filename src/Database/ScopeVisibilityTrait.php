@@ -26,7 +26,7 @@ trait ScopeVisibilityTrait
     }
 
     /**
-     * Scope a query to only include records that are visible to a user.
+     * 限制查询范围，仅包含对用户可见的记录
      *
      * @param Builder $query
      * @param User $actor

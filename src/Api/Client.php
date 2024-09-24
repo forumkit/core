@@ -43,9 +43,9 @@ class Client
     }
 
     /**
-     * Set the request actor.
-     * This is not needed if a parent request is provided.
-     * It can, however, override the parent request's actor.
+     * 设置请求的执行者（用户）。
+     * 如果已经提供了父请求，则此步骤不是必需的。
+     * 但是，它可以覆盖父请求中的执行者。
      */
     public function withActor(User $actor): Client
     {
@@ -105,7 +105,7 @@ class Client
     }
 
     /**
-     * Execute the given API action class, pass the input and return its response.
+     * 执行给定的API操作类，传递输入并返回其响应。
      *
      * @param string $method
      * @param string $path
@@ -126,7 +126,7 @@ class Client
             $request = RequestUtil::withActor($request, RequestUtil::getActor($this->parent));
         }
 
-        // This should override the actor from the parent request, if one exists.
+        // 如果当前请求对象（$this）有自己的执行者信息，则覆盖从父请求中继承的执行者信息（如果有的话）。
         if ($this->actor) {
             $request = RequestUtil::withActor($request, $this->actor);
         }

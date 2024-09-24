@@ -266,7 +266,8 @@ class Document implements Renderable
             $head[] = '<link rel="canonical" href="'.e(self::setPageParam($this->canonicalUrl, $this->page)).'">';
         }
 
-        $head = array_merge($head, $this->makePreloads());
+        // 合并预加载资源到$head数组中
+        // $head = array_merge($head, $this->makePreloads());
 
         $head = array_merge($head, array_map(function ($content, $name) {
             return '<meta name="'.e($name).'" content="'.e($content).'">';

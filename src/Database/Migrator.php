@@ -16,33 +16,35 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Migrator
 {
     /**
-     * The migration repository implementation.
+     * 迁移存储库实现
      *
      * @var \Forumkit\Database\MigrationRepositoryInterface
      */
     protected $repository;
 
     /**
-     * The filesystem instance.
+     * 文件系统实例
      *
      * @var \Illuminate\Filesystem\Filesystem
      */
     protected $files;
 
     /**
-     * The output interface implementation.
+     * 输出接口实现
      *
      * @var OutputInterface|null
      */
     protected $output;
 
     /**
+     * 数据库连接实例
+     * 
      * @var ConnectionInterface
      */
     protected $connection;
 
     /**
-     * Create a new migrator instance.
+     * 创建一个新的迁移器实例
      */
     public function __construct(
         MigrationRepositoryInterface $repository,
@@ -52,18 +54,19 @@ class Migrator
         $this->files = $files;
         $this->repository = $repository;
 
+        // 强制仅支持MySQL连接
         if (! ($connection instanceof MySqlConnection)) {
             throw new InvalidArgumentException('Only MySQL connections are supported');
         }
 
         $this->connection = $connection;
 
-        // Workaround for https://github.com/laravel/framework/issues/1186
+        // 修正Laravel框架的一个问题
         $connection->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
     }
 
     /**
-     * Run the outstanding migrations at a given path.
+     * 在给定路径下运行待处理的迁移
      *
      * @param  string    $path
      * @param  Extension|null $extension
@@ -81,7 +84,7 @@ class Migrator
     }
 
     /**
-     * Run an array of migrations.
+     * 运行一个迁移列表
      *
      * @param  string    $path
      * @param  array     $migrations
@@ -90,25 +93,21 @@ class Migrator
      */
     public function runMigrationList($path, $migrations, Extension $extension = null)
     {
-        // First we will just make sure that there are any migrations to run. If there
-        // aren't, we will just make a note of it to the developer so they're aware
-        // that all of the migrations have been run against this database system.
+        // 首先，我们确保有迁移需要运行。如果没有，则通知开发者所有迁移都已运行。
         if (count($migrations) == 0) {
             $this->note('<info>Nothing to migrate.</info>');
 
             return;
         }
 
-        // Once we have the array of migrations, we will spin through them and run the
-        // migrations "up" so the changes are made to the databases. We'll then log
-        // that the migration was run so we don't repeat it next time we execute.
+        // 遍历迁移数组，并运行它们，将更改应用到数据库中。然后记录迁移的运行情况，避免重复执行。
         foreach ($migrations as $file) {
             $this->runUp($path, $file, $extension);
         }
     }
 
     /**
-     * Run "up" a migration instance.
+     * 运行一个迁移实例的 向上 "up" 操作
      *
      * @param  string    $path
      * @param  string    $file
@@ -119,16 +118,15 @@ class Migrator
     {
         $this->resolveAndRunClosureMigration($path, $file);
 
-        // Once we have run a migrations class, we will log that it was run in this
-        // repository so that we don't try to run it next time we do a migration
-        // in the application. A migration repository keeps the migrate order.
+        // 运行迁移类后，我们将记录它已在此存储库中运行，以便下次在应用程序中进行迁移时，我们就不会尝试运行它。
+        // 迁移存储库保持迁移顺序。
         $this->repository->log($file, $extension ? $extension->getId() : null);
 
         $this->note("<info>Migrated:</info> $file");
     }
 
     /**
-     * Rolls all of the currently applied migrations back.
+     * 回滚所有已应用的迁移
      *
      * @param  string    $path
      * @param  Extension|null $extension
@@ -154,7 +152,7 @@ class Migrator
     }
 
     /**
-     * Run "down" a migration instance.
+     * 运行一个迁移实例的 向下 "down" 操作
      *
      * @param  string    $path
      * @param  string    $file
@@ -166,16 +164,15 @@ class Migrator
     {
         $this->resolveAndRunClosureMigration($path, $file, 'down');
 
-        // Once we have successfully run the migration "down" we will remove it from
-        // the migration repository so it will be considered to have not been run
-        // by the application then will be able to fire by any later operation.
+        // 一旦我们成功 关闭  "down" 了迁移，我们会将其从迁移存储库中删除，
+        // 这样它就会被视为没有被应用程序运行，然后就可以被任何后续操作触发。
         $this->repository->delete($file, $extension ? $extension->getId() : null);
 
         $this->note("<info>Rolled back:</info> $file");
     }
 
     /**
-     * Runs a closure migration based on the migrate direction.
+     * 根据迁移方向运行闭包迁移
      *
      * @param        $migration
      * @param string $direction
@@ -191,7 +188,7 @@ class Migrator
     }
 
     /**
-     * Resolves and run a migration and assign the filename to the exception if needed.
+     * 解析并运行迁移，如果需要，将文件名附加到异常中
      *
      * @param string $path
      * @param string $file
@@ -210,7 +207,7 @@ class Migrator
     }
 
     /**
-     * Get all of the migration files in a given path.
+     * 获取给定路径下的所有迁移文件
      *
      * @param  string $path
      * @return array
@@ -227,16 +224,14 @@ class Migrator
             return str_replace('.php', '', basename($file));
         }, $files);
 
-        // Once we have all of the formatted file names we will sort them and since
-        // they all start with a timestamp this should give us the migrations in
-        // the order they were actually created by the application developers.
+        // 对文件名进行排序，因为它们都以时间戳开头，所以这将按照它们被创建的顺序进行排序。
         sort($files);
 
         return $files;
     }
 
     /**
-     * Resolve a migration instance from a file.
+     * 从文件中解析迁移实例
      *
      * @param  string $path
      * @param  string $file
@@ -254,9 +249,9 @@ class Migrator
     }
 
     /**
-     * Initialize the Forumkit database from a schema dump.
+     * 从架构转储文件初始化Forumkit数据库
      *
-     * @param string $path to the directory containing the dump.
+     * @param string $path 包含转储文件的目录路径
      */
     public function installFromSchema(string $path)
     {
@@ -290,7 +285,7 @@ class Migrator
     }
 
     /**
-     * Set the output implementation that should be used by the console.
+     * 设置控制台应使用的输出实现
      *
      * @param OutputInterface $output
      * @return $this
@@ -303,7 +298,7 @@ class Migrator
     }
 
     /**
-     * Write a note to the conosle's output.
+     * 向控制台输出一条信息
      *
      * @param string $message
      * @return void
@@ -316,7 +311,7 @@ class Migrator
     }
 
     /**
-     * Determine if the migration repository exists.
+     * 判断迁移仓库是否存在
      *
      * @return bool
      */

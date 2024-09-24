@@ -1,12 +1,10 @@
 <!doctype html>
-<html @if ($direction) dir="{{ $direction }}" @endif @if ($language) lang="{{ $language }}" @endif>
-
-    <head>
-        <meta charset="utf-8">
-        <title>{{ $title }}</title>
-
-        {!! $head !!}
-    </head>
+<html @if($direction)dir="{{$direction}}"@endif @if($language)lang="{{$language}}" @endif>
+<head>
+<meta charset="utf-8">
+<title>{{ $title }}</title>
+{!! $head !!}
+</head>
 
     <body>
         {!! $layout !!}

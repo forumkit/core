@@ -13,8 +13,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
 /**
- * Not to be confused with the CreateTokenController,
- * this controller is used by the actor to manually create a developer type access token.
+ * 注意不要与用于用户登录并生成会话式访问令牌的 CreateTokenController 混淆，
+ * 这个控制器（ CreateAccessTokenController ）是由用户（或称为 actor ）手动用来创建开发者类型的访问令牌的。
+ * 它继承自 AbstractCreateController ，可能包含了一些通用的创建逻辑或依赖注入。
  */
 class CreateAccessTokenController extends AbstractCreateController
 {

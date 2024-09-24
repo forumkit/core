@@ -35,9 +35,7 @@ class ThrottleApi implements Middleware
         foreach ($this->throttlers as $throttler) {
             $result = $throttler($request);
 
-            // Explicitly returning false overrides all throttling.
-            // Explicitly returning true marks the request to be throttled.
-            // Anything else is ignored.
+            // 显式返回 false 将覆盖所有节流限制，即请求不会被限制
             if ($result === false) {
                 return false;
             } elseif ($result === true) {

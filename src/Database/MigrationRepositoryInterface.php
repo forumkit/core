@@ -5,7 +5,7 @@ namespace Forumkit\Database;
 interface MigrationRepositoryInterface
 {
     /**
-     * Get the ran migrations for the given extension.
+     * 获取给定扩展的已运行迁移
      *
      * @param string $extension
      * @return array
@@ -13,7 +13,7 @@ interface MigrationRepositoryInterface
     public function getRan($extension = null);
 
     /**
-     * Log that a migration was run.
+     * 记录一个迁移的运行
      *
      * @param string $file
      * @param string $extension
@@ -22,7 +22,7 @@ interface MigrationRepositoryInterface
     public function log($file, $extension = null);
 
     /**
-     * Remove a migration from the log.
+     * 从日志中删除一个迁移
      *
      * @param string $file
      * @param string $extension
@@ -31,7 +31,7 @@ interface MigrationRepositoryInterface
     public function delete($file, $extension = null);
 
     /**
-     * Determine if the migration repository exists.
+     * 确定迁移仓库是否存在
      *
      * @return bool
      */

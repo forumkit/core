@@ -51,12 +51,12 @@ class AccessTokenSerializer extends AbstractSerializer
             ]),
         ];
 
-        // Unset hidden attributes (like the token value on session tokens)
+        // 移除隐藏属性（如会话令牌上的令牌值）
         foreach ($token->getHidden() as $name) {
             unset($attributes[$name]);
         }
 
-        // Hide the token value to non-actors no matter who they are.
+        // 无论非操作员是谁，都向其隐藏令牌值
         if (isset($attributes['token']) && $this->getActor()->id !== $token->user_id) {
             unset($attributes['token']);
         }

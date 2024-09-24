@@ -45,8 +45,9 @@ class UpdateDiscussionController extends AbstractShowController
             new EditDiscussion($discussionId, $actor, $data)
         );
 
-        // TODO: Refactor the ReadDiscussion (state) command into EditDiscussion?
-        // That's what extensions will do anyway.
+        // TODO: 考虑将 ReadDiscussion（状态）命令重构到 EditDiscussion 中？
+        // 扩展程序反正会这么做。
+        // 如果数据中存在 lastReadPostNumber 属性，表示用户已读的最后帖子编号
         if ($readNumber = Arr::get($data, 'attributes.lastReadPostNumber')) {
             $state = $this->bus->dispatch(
                 new ReadDiscussion($discussionId, $actor, $readNumber)

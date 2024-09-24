@@ -28,12 +28,12 @@ class DeleteAccessTokenController extends AbstractDeleteController
         /** @var Session|null $session */
         $session = $request->getAttribute('session');
 
-        // Current session should only be terminated through logout.
+        // 当前会话应该仅通过登出操作来终止
         if ($session && $token->token === $session->get('access_token')) {
             throw new PermissionDeniedException();
         }
 
-        // Don't give away the existence of the token.
+        // 不要泄露令牌的存在性
         if ($actor->cannot('revoke', $token)) {
             throw new ModelNotFoundException();
         }

@@ -87,7 +87,7 @@ class ShowDiscussionController extends AbstractShowController
             $discussion = $this->discussions->findOrFail($discussionId, $actor);
         }
 
-        // If posts is included or a sub relation of post is included.
+        // 如果包含 posts 或包含 post 的子关系
         if (in_array('posts', $include) || Str::contains(implode(',', $include), 'posts.')) {
             $postRelationships = $this->getPostRelationships($include);
 
@@ -215,7 +215,7 @@ class ShowDiscussionController extends AbstractShowController
             return "posts.$relation";
         }, $postCallableRelationships)));
 
-        // remove posts. prefix from keys
+        // 删除帖子。键的前缀
         return array_combine(array_map(function ($relation) {
             return substr($relation, 6);
         }, array_keys($relationCallables)), array_values($relationCallables));

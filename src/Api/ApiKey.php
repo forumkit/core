@@ -22,7 +22,7 @@ class ApiKey extends AbstractModel
     protected $dates = ['last_activity_at'];
 
     /**
-     * Generate an API key.
+     * 生成API密钥。
      *
      * @return static
      */

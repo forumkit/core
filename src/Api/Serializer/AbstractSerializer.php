@@ -95,7 +95,7 @@ abstract class AbstractSerializer extends BaseAbstractSerializer
     }
 
     /**
-     * Get the default set of serialized attributes for a model.
+     * 获取模型的默认序列化属性集
      *
      * @param object|array $model
      * @return array
@@ -126,7 +126,7 @@ abstract class AbstractSerializer extends BaseAbstractSerializer
     }
 
     /**
-     * Get a custom relationship.
+     * 获取自定义关系
      *
      * @param mixed $model
      * @param string $name
@@ -152,7 +152,7 @@ abstract class AbstractSerializer extends BaseAbstractSerializer
     }
 
     /**
-     * Get a relationship builder for a has-one relationship.
+     * 获取 has-one 关系的构建器
      *
      * @param mixed $model
      * @param string|Closure|\Tobscure\JsonApi\SerializerInterface $serializer
@@ -165,7 +165,7 @@ abstract class AbstractSerializer extends BaseAbstractSerializer
     }
 
     /**
-     * Get a relationship builder for a has-many relationship.
+     * 获取 has-many 关系的构建器
      *
      * @param mixed $model
      * @param string|Closure|\Tobscure\JsonApi\SerializerInterface $serializer

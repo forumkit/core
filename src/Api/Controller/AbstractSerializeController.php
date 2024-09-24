@@ -18,49 +18,49 @@ use Tobscure\JsonApi\SerializerInterface;
 abstract class AbstractSerializeController implements RequestHandlerInterface
 {
     /**
-     * The name of the serializer class to output results with.
+     * 序列化器类名称，用于输出处理结果
      *
      * @var string
      */
     public $serializer;
 
     /**
-     * The relationships that are included by default.
+     * 默认包含的关联关系数组
      *
      * @var array
      */
     public $include = [];
 
     /**
-     * The relationships that are available to be included.
+     * 可选包含的关联关系数组
      *
      * @var array
      */
     public $optionalInclude = [];
 
     /**
-     * The maximum number of records that can be requested.
+     * 可以请求的最大记录数
      *
      * @var int
      */
     public $maxLimit = 50;
 
     /**
-     * The number of records included by default.
+     * 默认包含的记录数
      *
      * @var int
      */
     public $limit = 20;
 
     /**
-     * The fields that are available to be sorted by.
+     * 可用于排序的字段数组
      *
      * @var array
      */
     public $sortFields = [];
 
     /**
-     * The default sort field and order to user.
+     * 默认使用的排序字段和顺序
      *
      * @var array|null
      */
@@ -133,7 +133,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Get the data to be serialized and assigned to the response document.
+     * 获取要序列化并分配给响应文档的数据
      *
      * @param ServerRequestInterface $request
      * @param Document $document
@@ -142,7 +142,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     abstract protected function data(ServerRequestInterface $request, Document $document);
 
     /**
-     * Create a PHP JSON-API Element for output in the document.
+     * 为输出在文档中创建一个PHP JSON-API元素
      *
      * @param mixed $data
      * @param SerializerInterface $serializer
@@ -151,7 +151,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     abstract protected function createElement($data, SerializerInterface $serializer);
 
     /**
-     * Returns the relations to load added by extenders.
+     * 返回由扩展器添加的要加载的关系
      *
      * @return string[]
      */
@@ -169,7 +169,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Returns the relation callables to load added by extenders.
+     * 返回由扩展器添加的要加载的关系可调用项
      *
      * @return array<string, callable>
      */
@@ -187,7 +187,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Eager loads the required relationships.
+     * 预加载所需的关系
      */
     protected function loadRelations(Collection $models, array $relations, ServerRequestInterface $request = null): void
     {
@@ -318,7 +318,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Set the serializer that will serialize data for the endpoint.
+     * 设置用于序列化端点数据的序列化器
      *
      * @param string $serializer
      */
@@ -328,7 +328,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Include the given relationship by default.
+     * 默认情况下包含给定的关联关系
      *
      * @param string|array $name
      */
@@ -338,7 +338,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Don't include the given relationship by default.
+     * 默认情况下不包含给定的关联关系
      *
      * @param string|array $name
      */
@@ -348,7 +348,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Make the given relationship available for inclusion.
+     * 使给定的关联关系可用于包含
      *
      * @param string|array $name
      */
@@ -358,7 +358,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Don't allow the given relationship to be included.
+     * 不允许包含给定的关联关系
      *
      * @param string|array $name
      */
@@ -368,7 +368,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Set the default number of results.
+     * 设置默认的结果数量
      *
      * @param int $limit
      */
@@ -378,7 +378,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Set the maximum number of results.
+     * 设置结果的最大数量
      *
      * @param int $max
      */
@@ -388,7 +388,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Allow sorting results by the given field.
+     * 允许按给定字段对结果进行排序
      *
      * @param string|array $field
      */
@@ -398,7 +398,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Disallow sorting results by the given field.
+     * 不允许按给定字段对结果进行排序
      *
      * @param string|array $field
      */
@@ -408,7 +408,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     }
 
     /**
-     * Set the default sort order for the results.
+     * 设置结果的默认排序顺序
      *
      * @param array $sort
      */

@@ -105,12 +105,13 @@ class ListDiscussionsController extends AbstractListController
 
         Discussion::setStateUser($actor);
 
-        // Eager load groups for use in the policies (isAdmin check)
+        // 预先加载用户组信息，以便在策略（如检查用户是否为管理员）中使用
+        // 如果请求中包含了 'mostRelevantPost.user' 关联数据，则还需要加载 'mostRelevantPost.user.groups'
         if (in_array('mostRelevantPost.user', $include)) {
             $include[] = 'mostRelevantPost.user.groups';
 
-            // If the first level of the relationship wasn't explicitly included,
-            // add it so the code below can look for it
+            // 如果 'mostRelevantPost' 这一级关联数据没有被显式包含，也将其添加到 $include 数组中
+            // 这是为了确保后续代码能够找到并处理 'mostRelevantPost' 关联数据
             if (! in_array('mostRelevantPost', $include)) {
                 $include[] = 'mostRelevantPost';
             }
